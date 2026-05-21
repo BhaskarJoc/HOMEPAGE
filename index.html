@@ -1,39 +1,2049 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap');
-  @import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --navy:#0d1b2a;--gold:#c9a84c;--gold-light:#f0d080;--gold-pale:#fdf6e3;
-    --cream:#faf8f3;--text:#1a1a2e;--muted:#5a6270;--border:#e8e0cc;
-    --card-bg:#ffffff;--section-alt:#f4f0e8;--nav-h:62px;
-  }
-  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);padding-top:var(--nav-h);}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEAA Distinguished Alumni Awards 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  /* ── NAVBAR ── */
-  .site-nav{
-    position:fixed;top:0;left:0;right:0;z-index:999;
-    height:var(--nav-h);
-    background:rgba(13,27,42,0.97);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(201,168,76,0.2);
-    display:flex;align-items:center;justify-content:space-between;
-    padding:0 1.5rem;
-    box-shadow:0 2px 20px rgba(0,0,0,0.3);
+  <style>
+    /* ══════════════════════════════════════
+       VARIABLES & RESET
+    ══════════════════════════════════════ */
+    :root {
+      --navy:       #0d1b2a;
+      --navy-mid:   #1a3350;
+      --navy-light: #1e3f60;
+      --gold:       #c9a84c;
+      --gold-light: #f0d080;
+      --gold-pale:  #fdf6e3;
+      --cream:      #faf8f3;
+      --text:       #1a1a2e;
+      --muted:      #5a6270;
+      --border:     #e8e0cc;
+      --card-bg:    #ffffff;
+      --section-alt: #f4f0e8;
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    section, nav, footer { position: relative; z-index: 1; }
+
+    /* ══════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 0 5%;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(13,27,42,0.96);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+    }
+
+    .nav-brand { display: flex; align-items: baseline; gap: .5rem; }
+    .nav-brand strong {
+      font-family: var(--ff-display);
+      font-weight: 700; font-size: 1.35rem;
+      letter-spacing: 2px; color: var(--gold-light);
+    }
+    .nav-brand em {
+      font-family: var(--ff-display);
+      font-style: italic; font-weight: 400;
+      font-size: .9rem; color: rgba(255,255,255,0.6);
+    }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: rgba(240,208,128,0.75); text-decoration: none;
+      font-size: .78rem; letter-spacing: 1.5px; text-transform: uppercase;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: #fff !important;
+      padding: .45rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 600 !important;
+      clip-path: none !important;
+      transition: background .2s, transform .15s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; transform: translateY(-1px) !important; }
+
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      min-height: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 5.5rem 5% 5rem;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #0d1b2a 0%, #1a3350 60%, #0f2640 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(201,168,76,0.18), transparent);
+      pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.18);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      padding: 5px 18px; border-radius: 20px;
+      margin-bottom: 1.5rem; font-weight: 500;
+      animation: fadeDown .7s ease both;
+    }
+
+    .hero h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      font-weight: 900;
+      line-height: 1.12;
+      color: #fff;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+      animation: fadeDown .7s .12s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      max-width: 580px;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.72);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      animation: fadeDown .7s .24s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--gold); color: #fff;
+      padding: 13px 30px;
+      font-family: var(--ff-body);
+      font-size: .95rem; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      border-radius: 40px;
+      clip-path: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      animation: fadeDown .7s .36s ease both;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.5);
+    }
+
+    /* Stats row */
+    .hero-stats {
+      display: flex; gap: 4rem; margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201,168,76,0.25);
+      animation: fadeUp .8s .48s ease both;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: var(--ff-display);
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--gold-light); display: block; line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 11px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
+      display: block; margin-top: .4rem;
+      font-weight: 500;
+    }
+
+    /* Scroll indicator */
+    .scroll-down {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      animation: bounce 2.4s infinite;
+    }
+    .scroll-down span {
+      font-size: .6rem; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      font-weight: 500;
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+
+    /* ══════════════════════════════════════
+       SHARED SECTION STYLES
+    ══════════════════════════════════════ */
+    .section { padding: 5rem 5%; }
+    .section-alt { background: var(--section-alt); }
+
+    .section-eyebrow {
+      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: .5rem;
+    }
+
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.15;
+      color: var(--navy); margin-bottom: .6rem;
+    }
+    .section-title em { font-style: italic; font-weight: 700; color: var(--gold); }
+
+    .section-sub {
+      font-size: .93rem; line-height: 1.75;
+      color: var(--muted); font-weight: 400; max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+
+    /* ══════════════════════════════════════
+       ABOUT SECTION
+    ══════════════════════════════════════ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .about-card {
+      padding: 2rem 1.75rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .about-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(13,27,42,0.1);
+    }
+    .about-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
+      border-radius: 14px 14px 0 0;
+    }
+    .about-card:hover::before { transform: scaleX(1); }
+
+    .about-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+    .about-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--navy); margin-bottom: .6rem;
+    }
+    .about-card p {
+      font-size: .88rem; line-height: 1.75;
+      color: var(--muted); flex: 1;
+    }
+    .about-pill {
+      display: inline-block;
+      margin-top: 1rem; padding: .3rem .9rem;
+      background: var(--gold-pale);
+      border: 1px solid #e8d48a;
+      border-radius: 6px;
+      font-size: .75rem; color: #7a5c00;
+      font-weight: 500;
+    }
+
+
+    /* ══════════════════════════════════════
+       CATEGORIES SECTION
+    ══════════════════════════════════════ */
+    .cats-section { background: var(--section-alt); }
+
+    /* Tab bar */
+    .cat-tabs {
+      display: flex;
+      align-items: stretch;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .cat-tab {
+      flex: 1; min-height: 60px;
+      padding: 1rem 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--ff-body);
+      font-size: .82rem;
+      letter-spacing: .5px;
+      text-transform: uppercase; font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .cat-tab:last-child { border-right: none; }
+    .cat-tab:hover { background: var(--gold-pale); color: var(--navy); }
+    .cat-tab.active { background: var(--navy); color: var(--gold-light); font-weight: 600; }
+
+    .cat-panel { display: none; animation: fadeIn .35s ease; }
+    .cat-panel.active { display: block; }
+
+    .cat-desc {
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.4rem;
+      background: var(--gold-pale);
+      margin-bottom: 1.75rem;
+      border-radius: 0 8px 8px 0;
+      font-size: .9rem; line-height: 1.8;
+      color: var(--text);
+    }
+    .cat-desc strong { color: var(--navy); font-weight: 600; }
+
+    .honors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    /* Flip card */
+    .honor-card {
+      position: relative; min-height: 250px;
+      perspective: 1000px;
+      border: none; background: transparent; cursor: default;
+    }
+    .honor-card-inner {
+      position: relative; width: 100%; height: 100%; min-height: 190px;
+      transform-style: preserve-3d;
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+    }
+    .honor-card:hover .honor-card-inner { transform: rotateY(180deg); }
+
+    .honor-front, .honor-back {
+      position: absolute; inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      padding: 1.5rem 1.4rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .honor-front {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--card-bg);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .honor-card:hover .honor-front {
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(13,27,42,0.12);
+    }
+    .honor-back {
+      background: var(--navy);
+      border-color: var(--gold);
+      transform: rotateY(180deg);
+    }
+
+    .honor-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .honor-name {
+      font-family: var(--ff-display);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--navy); margin-bottom: .35rem;
+    }
+    .honor-desc {
+      font-size: .78rem; color: var(--muted);
+      line-height: 1.5; margin-top: .2rem;
+    }
+    .honor-back-title {
+      font-family: var(--ff-display);
+      font-size: 1rem; font-weight: 700;
+      color: var(--gold-light); margin-bottom: .75rem;
+    }
+    .honor-sub-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .honor-sub-list li {
+      font-size: .78rem; line-height: 1.5;
+      color: rgba(255,255,255,0.8); padding-left: 1rem; position: relative;
+    }
+    .honor-sub-list li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--gold); font-size: .7rem;
+    }
+    .honor-num {
+      font-family: var(--ff-display);
+      font-size: 2rem; font-weight: 700;
+      color: rgba(201,168,76,0.25); line-height: 1;
+      flex-shrink: 0;
+    }
+    .honor-text {
+      font-family: var(--ff-display);
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--navy); display: block; margin-bottom: .3rem;
+    }
+    .honor-back-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .honor-back-list li {
+      font-size: .78rem; line-height: 1.5;
+      color: rgba(255,255,255,0.85); padding-left: 1rem; position: relative;
+    }
+    .honor-back-list li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--gold-light); font-size: .7rem;
+    }
+
+
+    /* ══════════════════════════════════════
+       FORM SECTION
+    ══════════════════════════════════════ */
+    .form-section { background: var(--cream); }
+
+    .form-wrap { max-width: 880px; margin: 0 auto; }
+
+    .fgroup { margin-bottom: 2.5rem; }
+
+    .fgroup-head {
+      display: flex; align-items: center; gap: .75rem;
+      font-family: var(--ff-display);
+      font-size: 1.2rem; font-weight: 700; color: var(--navy);
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+    .fgroup-num {
+      display: inline-flex; width: 26px; height: 26px;
+      background: var(--navy); color: #fff;
+      border-radius: 50%;
+      align-items: center; justify-content: center;
+      font-family: var(--ff-body); font-size: .75rem; font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .frow {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+      gap: 1rem; margin-bottom: 1rem;
+      align-items: start;
+    }
+    .frow:last-child { margin-bottom: 0; }
+
+    .field { display: flex; flex-direction: column; gap: .4rem; height: 100%; }
+    .field-full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 11px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 500;
+    }
+    label .req { color: var(--gold); }
+
+    input, select, textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: .7rem .95rem;
+      font-family: var(--ff-body);
+      font-size: .88rem; font-weight: 400;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none; appearance: none;
+      border-radius: 8px;
+    }
+    input::placeholder, textarea::placeholder { color: #bbb; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.14);
+    }
+    input.err, select.err, textarea.err {
+      border-color: #e05;
+      box-shadow: 0 0 0 3px rgba(220,0,85,0.1);
+    }
+
+    select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath fill='%23c9a84c' d='M5.5 7L0 0h11z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    select option { background: #fff; color: var(--text); }
+    select optgroup {
+      background: var(--navy); color: var(--gold-light);
+      font-size: .75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    select optgroup option {
+      background: var(--navy-mid); color: #fff;
+      font-size: .85rem; font-weight: 400;
+      text-transform: none; letter-spacing: 0; padding-left: 1rem;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(60%) sepia(30%) saturate(400%) hue-rotate(20deg);
+      cursor: pointer;
+    }
+    textarea { resize: vertical; min-height: 210px; line-height: 1.7; border-radius: 8px; }
+
+    .wcount {
+      text-align: right; font-size: .72rem;
+      color: var(--muted); margin-top: .3rem;
+      transition: color .2s; font-weight: 500;
+    }
+    .wcount.warn { color: #e08800; }
+    .wcount.over { color: #e00; }
+
+    /* File upload */
+    .upload-zone {
+      position: relative;
+      border: 2px dashed var(--border);
+      padding: 2rem; text-align: center;
+      cursor: pointer; transition: all .2s;
+      border-radius: 12px;
+      background: #fafafa;
+    }
+    .upload-zone:hover {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+    }
+    .upload-zone input[type="file"] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      width: 100%; height: 100%;
+      border: none; background: none; padding: 0;
+    }
+    .upload-ico { font-size: 2rem; display: block; margin-bottom: .4rem; }
+    .upload-lbl { font-size: .88rem; color: var(--text); font-weight: 400; }
+    .upload-note { font-size: .7rem; color: var(--muted); margin-top: .2rem; }
+
+    .file-list { display: flex; flex-direction: column; gap: .4rem; margin-top: .75rem; }
+    .file-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .4rem .8rem;
+      background: var(--gold-pale);
+      border: 1px solid #e8d48a;
+      border-radius: 6px;
+      font-size: .78rem; color: #7a5c00;
+    }
+    .file-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-item-size { color: var(--muted); margin-left: 1rem; font-size: .68rem; white-space: nowrap; }
+
+    /* Submit */
+    .submit-wrap { text-align: center; margin-top: 2.5rem; }
+    .submit-note {
+      font-size: .75rem; color: var(--muted);
+      max-width: 520px; margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+
+    .btn-submit {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: var(--navy); color: #fff;
+      padding: 13px 36px;
+      font-family: var(--ff-body);
+      font-size: .9rem; font-weight: 500;
+      border: none; cursor: pointer;
+      border-radius: 40px;
+      clip-path: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(13,27,42,0.25);
+    }
+    .btn-submit:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,168,76,0.4);
+    }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .btn-submit .spinner { display: none; }
+    .btn-submit.loading .spinner { display: inline-block; animation: spin .8s linear infinite; }
+    .btn-submit.loading .btn-text { opacity: .7; }
+
+
+    /* ══════════════════════════════════════
+       MODAL
+    ══════════════════════════════════════ */
+    .modal-bg {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(13,27,42,0.75);
+      backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+    }
+    .modal-bg.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2.25rem;
+      max-width: 460px; width: 92%;
+      text-align: center;
+      position: relative;
+      animation: scaleIn .3s ease;
+      box-shadow: 0 20px 60px rgba(13,27,42,0.2);
+    }
+    .modal-ico { font-size: 3rem; margin-bottom: 1rem; }
+    .modal h3 {
+      font-family: var(--ff-display);
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--navy); margin-bottom: .75rem;
+    }
+    .modal p {
+      font-size: .9rem; line-height: 1.75;
+      color: var(--muted); margin-bottom: 1.75rem;
+    }
+    .btn-modal {
+      background: var(--navy); color: #fff;
+      padding: .7rem 2rem;
+      font-family: var(--ff-body);
+      font-size: .85rem; font-weight: 500;
+      border: none; cursor: pointer; border-radius: 40px;
+      transition: background .2s;
+    }
+    .btn-modal:hover { background: var(--gold); }
+
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      padding: 3rem 5%;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      background: var(--navy);
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .footer-logo {
+      font-family: var(--ff-display);
+      font-size: 2rem; font-weight: 900;
+      letter-spacing: 3px; color: var(--gold-light);
+    }
+    .footer-divider {
+      width: 50px; height: 1px;
+      background: rgba(201,168,76,0.35);
+      margin: 1.25rem auto;
+    }
+    .footer-contact {
+      font-size: .88rem; color: rgba(255,255,255,0.75);
+      margin-bottom: .5rem;
+    }
+    .footer-contact a { color: var(--gold-light); text-decoration: none; }
+    .footer-contact a:hover { text-decoration: underline; }
+    .footer-privacy {
+      font-size: .75rem; color: rgba(255,255,255,0.5);
+      max-width: 560px; margin: 1.25rem auto 0; line-height: 1.75;
+    }
+    .footer-copy {
+      font-size: .68rem; color: rgba(255,255,255,0.35);
+      margin-top: 1.25rem; letter-spacing: 1px;
+    }
+
+
+    /* ══════════════════════════════════════
+       GUIDELINES SECTION
+    ══════════════════════════════════════ */
+    .guidelines-section { background: var(--cream); }
+
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem; margin-bottom: 0; align-items: stretch;
+    }
+
+    .guideline-card {
+      padding: 1.75rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--card-bg);
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .guideline-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(13,27,42,0.1);
+    }
+    .guideline-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0); transform-origin: center;
+      transition: transform .3s ease;
+      border-radius: 0 0 14px 14px;
+    }
+    .guideline-card:hover::after { transform: scaleX(1); }
+
+    .highlight-card {
+      border-color: rgba(201,168,76,0.5);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      text-align: center;
+    }
+    .highlight-card h3 { color: var(--gold-light) !important; }
+    .highlight-card .guideline-note { color: rgba(255,255,255,0.65); }
+    .highlight-card .guideline-icon { filter: none; }
+
+    .guideline-icon { font-size: 1.8rem; display: block; margin-bottom: .9rem; }
+    .guideline-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--navy); margin-bottom: .75rem;
+    }
+
+    .guideline-list {
+      list-style: none; padding: 0; margin: 0; flex: 1;
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .guideline-list li {
+      font-size: .87rem; line-height: 1.6;
+      color: var(--muted); padding-left: 1.1rem;
+      position: relative; font-weight: 400;
+    }
+    .guideline-list li::before {
+      content: '▸'; position: absolute; left: 0;
+      font-size: .65rem; top: .3rem;
+      color: var(--gold);
+    }
+    .guideline-list li strong { color: var(--navy); font-weight: 600; }
+
+    .guideline-deadline {
+      font-family: var(--ff-display);
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--gold-light); margin: .4rem 0;
+    }
+    .guideline-note {
+      font-size: .83rem; line-height: 1.6;
+      color: var(--muted); margin-bottom: 1.25rem; font-weight: 400;
+    }
+    .guideline-cta {
+      display: inline-block;
+      background: var(--gold); color: #fff;
+      padding: .55rem 1.5rem;
+      font-size: .82rem; font-weight: 500;
+      border-radius: 40px;
+      text-decoration: none;
+      clip-path: none;
+      transition: background .2s, transform .15s;
+    }
+    .guideline-cta:hover { background: var(--gold-light); color: var(--navy); transform: translateY(-2px); }
+
+    /* Judging Criteria */
+    .criteria-wrap { margin-top: 3rem; }
+    .criteria-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700; color: var(--navy); margin-bottom: 1.5rem;
+    }
+    .criteria-title em { font-style: italic; color: var(--gold); }
+
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem; align-items: stretch;
+    }
+
+    .criteria-card {
+      padding: 1.6rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--card-bg);
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      display: flex; flex-direction: column;
+      border-bottom: 3px solid var(--gold);
+    }
+    .criteria-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(13,27,42,0.1);
+    }
+    .criteria-num {
+      font-family: var(--ff-display);
+      font-size: 2.6rem; font-weight: 700;
+      color: rgba(201,168,76,0.2); line-height: 1;
+      display: block; margin-bottom: .4rem;
+    }
+    .criteria-card h4 {
+      font-family: var(--ff-display);
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--navy); margin-bottom: .5rem;
+    }
+    .criteria-card p {
+      font-size: .85rem; line-height: 1.65;
+      color: var(--muted); font-weight: 400; flex: 1;
+    }
+
+
+    /* ══════════════════════════════════════
+       TRACKER SECTION
+    ══════════════════════════════════════ */
+    .tracker-section {
+      padding: 0 5%;
+      background: var(--navy);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      position: relative; z-index: 1;
+    }
+    .tracker-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .tracker-item + .tracker-item {
+      border-left: 1px solid rgba(201,168,76,0.15);
+    }
+    .tracker-item {
+      padding: 2.5rem 1.5rem;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+      transition: background .2s;
+    }
+    .tracker-item:hover { background: rgba(201,168,76,0.05); }
+
+    .tracker-icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.3);
+      background: rgba(201,168,76,0.08);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+      transition: all .2s;
+    }
+    .tracker-item:hover .tracker-icon-wrap {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.15);
+    }
+    .tracker-icon { font-size: 1.2rem; line-height: 1; }
+
+    .tracker-eyebrow {
+      font-size: .58rem; letter-spacing: 2.5px;
+      text-transform: uppercase; color: rgba(201,168,76,0.5);
+      font-weight: 600; margin-bottom: .35rem;
+    }
+    .tracker-num {
+      font-family: var(--ff-display);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 700; color: var(--gold-light);
+      display: block; line-height: 1;
+    }
+    .tracker-lbl {
+      font-size: 11px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      font-weight: 500; margin-top: .4rem;
+    }
+    .tracker-bar {
+      width: 60%; height: 2px;
+      background: rgba(201,168,76,0.15);
+      border-radius: 2px; margin: .85rem auto 0;
+      overflow: hidden;
+    }
+    .tracker-bar-fill {
+      height: 100%;
+      width: var(--pct, 50%);
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+    }
+    .tracker-section-bottom-line { display: none; }
+
+    @media (max-width: 600px) {
+      .tracker-inner { grid-template-columns: repeat(2, 1fr); }
+      .tracker-item + .tracker-item { border-left: none; }
+      .tracker-item:nth-child(odd) { border-right: 1px solid rgba(201,168,76,0.15); }
+      .tracker-item:nth-child(n+3) { border-top: 1px solid rgba(201,168,76,0.15); }
+      .tracker-item { padding: 2rem 1.25rem; }
+    }
+
+
+    /* ══════════════════════════════════════
+       PRIVACY CONSENT
+    ══════════════════════════════════════ */
+    .consent-label {
+      display: flex; align-items: flex-start; gap: 1rem;
+      cursor: pointer; padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fafafa;
+      transition: border-color .2s, background .2s;
+      position: relative;
+    }
+    .consent-label:hover {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+    }
+    .consent-label input[type="checkbox"] {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .consent-box {
+      flex-shrink: 0;
+      width: 20px; height: 20px; margin-top: .15rem;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .consent-label input:checked ~ .consent-box {
+      background: var(--navy); border-color: var(--navy);
+    }
+    .consent-label input:checked ~ .consent-box::after {
+      content: '✓'; font-size: .85rem; font-weight: 700;
+      color: #fff; line-height: 1;
+    }
+    .consent-label.err-consent {
+      border-color: #e05;
+      background: rgba(220,0,85,0.04);
+    }
+    .consent-text {
+      font-size: .85rem; line-height: 1.75;
+      color: var(--text); font-weight: 400;
+    }
+    .consent-text strong { color: var(--navy); }
+
+
+    /* ══════════════════════════════════════
+       MISC
+    ══════════════════════════════════════ */
+    .input-icon-wrap { position: relative; display: flex; align-items: center; }
+    .input-icon {
+      position: absolute; left: .9rem;
+      font-size: .7rem; font-weight: 700;
+      color: var(--gold); opacity: .85;
+      pointer-events: none; z-index: 2;
+      font-family: var(--ff-body);
+    }
+    .input-icon-wrap input { flex: 1; }
+    .field-hint { font-size: .65rem; color: var(--muted); margin-top: .2rem; font-style: italic; }
+
+    .frow.solo { grid-template-columns: 1fr; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    * { max-width: 100%; }
+    img, svg, canvas { max-width: 100%; display: block; }
+    section { overflow: hidden; }
+    .form-wrap { width: 100%; box-sizing: border-box; }
+    select { box-sizing: border-box; max-width: 100%; }
+    .about-pill { word-break: break-word; }
+
+    @media (max-width: 600px) {
+      .section { padding: 3.5rem 4%; }
+      .hero { padding: 5.5rem 4% 4rem; }
+      nav { padding: 0 4%; }
+      footer { padding: 2.5rem 4%; }
+    }
+    @media (max-width: 720px) {
+      .nav-links .nav-link-hide { display: none; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; justify-content: center; }
+      .cat-tabs { flex-direction: column; }
+      .cat-tab { min-height: 52px; border-right: none; border-bottom: 1px solid var(--border); }
+      .cat-tab:last-child { border-bottom: none; }
+    }
+    @media (max-width: 480px) {
+      .frow { grid-template-columns: 1fr; }
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* Particles canvas hidden — not needed with light theme */
+    #particles-canvas { display: none; }
+
+  </style></head>
+<body>
+
+
+  <!-- Particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ══════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════ -->
+  <nav>
+    <div class="nav-brand">
+      <strong>GEAA</strong>
+      <em>Alumni Association</em>
+    </div>
+    <div class="nav-links">
+      <a href="#about"      class="nav-link-hide">About</a>
+      <a href="#guidelines" class="nav-link-hide">Guidelines</a>
+      <a href="#categories" class="nav-link-hide">Categories</a>
+      <a href="#nominate"   class="nav-cta">Nominate Now</a>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="hero">
+
+    <div class="hero-badge">GEAA Annual Excellence Awards 2027</div>
+
+    <h1>
+      Celebrating <em>Global Excellence:</em><br>
+      GEAA Distinguished<br>
+      <em>Alumni Awards 2027</em>
+    </h1>
+
+    <p class="hero-sub">
+      Recognizing the journeys, leadership, and impact of Graphic Era's distinguished ambassadors worldwide.
+    </p>
+
+    <a href="#nominate" class="btn-primary">◆ &nbsp;Nominate Now</a>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">9</span>
+        <span class="stat-lbl">Award Types</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-lbl">Categories</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">Feb 15'2027</span>
+        <span class="stat-lbl">Deadline</span>
+      </div>
+    </div>
+
+    <div class="scroll-down">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       LIVE TRACKER
+  ══════════════════════════════════════ -->
+  <div class="tracker-section" id="tracker">
+    <div class="tracker-inner">
+
+      <div class="tracker-item">
+        <span class="tracker-num" id="tVotes">0</span>
+        <span class="tracker-lbl">Votes Cast</span>
+        <div class="tracker-bar">
+          <div class="tracker-bar-fill" style="--pct:78%"></div>
+        </div>
+      </div>
+
+      <div class="tracker-item">
+        <span class="tracker-num" id="tNominees">0</span>
+        <span class="tracker-lbl">Nominees</span>
+        <div class="tracker-bar">
+          <div class="tracker-bar-fill" style="--pct:55%"></div>
+        </div>
+      </div>
+
+      <div class="tracker-item">
+        <span class="tracker-num" id="tCategories">0</span>
+        <span class="tracker-lbl">Categories</span>
+        <div class="tracker-bar">
+          <div class="tracker-bar-fill" style="--pct:100%"></div>
+        </div>
+      </div>
+
+      <div class="tracker-item">
+        <span class="tracker-num" id="tSubCategories">0</span>
+        <span class="tracker-lbl">Sub Categories</span>
+        <div class="tracker-bar">
+          <div class="tracker-bar-fill" style="--pct:100%"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       ABOUT
+  ══════════════════════════════════════ -->
+  <section class="section" id="about">
+    <div class="section-eyebrow">About the Awards</div>
+    <h2 class="section-title">Honoring <em>Legacy &amp; Impact</em></h2>
+    <p class="section-sub">
+      A tribute to the persistent efforts and remarkable contributions of our alumni in every corner of the world.
+    </p>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <span class="about-icon">🏛️</span>
+        <h3>The Vision</h3>
+        <p>
+          These awards are a tribute to the persistent efforts and remarkable contributions of our alumni in their respective fields — celebrating those who carry the spirit of Graphic Era to every corner of the globe.
+        </p>
+      </div>
+      <div class="about-card">
+        <span class="about-icon">🌟</span>
+        <h3>The Event</h3>
+        <p>
+          Winners will be honored during the prestigious Alumni Awards Ceremony — a landmark gathering of Graphic Era's most accomplished alumni, leaders, and visionaries.
+        </p>
+        <span class="about-pill">📍 Alumni Awards Ceremony - Dehradun'2027</span>
+      </div>
+      <div class="about-card">
+        <span class="about-icon">📅</span>
+        <h3>Nomination Deadline</h3>
+        <p>
+          All nominations must be submitted in full before the deadline. Ensure your submission includes complete achievement details and all supporting evidence.
+        </p>
+        <span class="about-pill">⏳ Deadline: Feb 15, 2027</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       GUIDELINES
+  ══════════════════════════════════════ -->
+  <section class="section guidelines-section" id="guidelines">
+    <div class="section-eyebrow">Nomination Guidelines</div>
+    <h2 class="section-title">How to <em>Nominate</em></h2>
+    <p class="section-sub">
+      Read all guidelines carefully before submitting. Nominations are assessed by the GEAA judging committee based on evidence and criteria.
+    </p>
+
+    <div class="guidelines-grid">
+
+      <div class="guideline-card">
+        <span class="guideline-icon">👤</span>
+        <h3>Who Can Nominate</h3>
+        <ul class="guideline-list">
+          <li>Alumni may submit a <strong>Self-Nomination</strong>.</li>
+          <li>Alumni may nominate a <strong>Fellow Alumnus/a</strong>.</li>
+          <li><strong>Staff &amp; faculty</strong> members may also nominate alumni.</li>
+          <li>A nominator may propose multiple alumni across different categories.</li>
+        </ul>
+      </div>
+
+      <div class="guideline-card">
+        <span class="guideline-icon">📋</span>
+        <h3>Submission Requirements</h3>
+        <ul class="guideline-list">
+          <li>Review all award categories before nominating.</li>
+          <li>Provide <strong>relevant proof(s)</strong> supporting the nomination.</li>
+          <li>Clearly describe the nominee's qualities, contributions, and worthiness.</li>
+          <li>All mandatory fields in the Nomination Form must be completed.</li>
+        </ul>
+      </div>
+
+      <div class="guideline-card">
+        <span class="guideline-icon">⚖️</span>
+        <h3>Judging Process</h3>
+        <ul class="guideline-list">
+          <li>Nominations are judged on <strong>award criteria</strong> and evidence provided.</li>
+          <li>The GEAA judging committee reviews all eligible applications.</li>
+          <li>Winners will be honoured at the <strong>Alumni Awards Ceremony - 2027</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="guideline-card highlight-card">
+        <span class="guideline-icon">📅</span>
+        <h3>Key Deadline</h3>
+        <p class="guideline-deadline">Feb 15, 2027</p>
+        <p class="guideline-note">All nominations must be submitted before this date. Late submissions will not be considered.</p>
+        <a href="#nominate" class="guideline-cta">Nominate Now ◆</a>
+      </div>
+
+    </div>
+
+    <!-- Judging Criteria -->
+    <div class="criteria-wrap" id="criteria">
+      <div class="section-eyebrow" style="margin-top:3.5rem;">Judging Criteria</div>
+      <h3 class="criteria-title">Four Pillars of <em>Evaluation</em></h3>
+      <div class="criteria-grid">
+
+        <div class="criteria-card">
+          <span class="criteria-num">01</span>
+          <h4>Impact</h4>
+          <p>Evidence of tangible, measurable impact — and its scale — in your profession, community, or society, inspired by your GEU education.</p>
+        </div>
+
+        <div class="criteria-card">
+          <span class="criteria-num">02</span>
+          <h4>GU Influence</h4>
+          <p>Evidence of how your Graphic Era education played a key role in shaping your success and amplifying your impact.</p>
+        </div>
+
+        <div class="criteria-card">
+          <span class="criteria-num">03</span>
+          <h4>Media Traction</h4>
+          <p>The degree to which your success story is likely to resonate with local, national, or global media in your country of entry or beyond.</p>
+        </div>
+
+        <div class="criteria-card">
+          <span class="criteria-num">04</span>
+          <h4>Inspire Potential</h4>
+          <p>Your capacity and willingness to influence the next generation of students to choose Graphic Era as their study destination.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       CATEGORIES
+  ══════════════════════════════════════ -->
+  <section class="section cats-section" id="categories">
+    <div class="section-eyebrow">Award Classifications</div>
+    <h2 class="section-title">Categories &amp; <em>Available Awards</em></h2>
+    <p class="section-sub">
+      9 awards across three geographic categories. Select your tab to explore what's available in each.
+    </p>
+
+
+    <div class="cat-tabs">
+      <button class="cat-tab active" data-cat="a">Category A &mdash; National</button>
+      <button class="cat-tab"        data-cat="b">Category B &mdash; Intl. (Indian)</button>
+      <button class="cat-tab"        data-cat="c">Category C &mdash; International</button>
+    </div>
+
+    <div id="panel-a" class="cat-panel active">
+      <div class="cat-desc">
+        <strong>Category A — National:</strong> Open to alumni of Indian origin currently working within India.
+      </div>
+        <p style="font-size:.78rem; color:rgba(201,168,76,0.85); margin-top:-1.75rem; margin-bottom:2.25rem; display:flex; align-items:center; gap:.5rem; font-weight:400; letter-spacing:.5px;">
+      <span style="font-size:1rem;">🔻</span> Hover over any award card to reveal its sub-categories
+    </p>
+
+      <div class="honors-grid" id="honors-a"></div>
+    </div>
+
+    <div id="panel-b" class="cat-panel">
+      <div class="cat-desc">
+        <strong>Category B — International (Indian Origin):</strong> Open to alumni of Indian origin currently working abroad.
+      </div>
+        <p style="font-size:.78rem; color:rgba(201,168,76,0.85); margin-top:-1.75rem; margin-bottom:2.25rem; display:flex; align-items:center; gap:.5rem; font-weight:400; letter-spacing:.5px;">
+      <span style="font-size:1rem;">🔻</span> Hover over any award card to reveal its sub-categories
+    </p>
+
+      <div class="honors-grid" id="honors-b"></div>
+    </div>
+
+    <div id="panel-c" class="cat-panel">
+      <div class="cat-desc">
+        <strong>Category C — International:</strong> Open to international alumni (non-Indian origin) currently working abroad.
+      </div>
+        <p style="font-size:.78rem; color:rgba(201,168,76,0.85); margin-top:-1.75rem; margin-bottom:2.25rem; display:flex; align-items:center; gap:.5rem; font-weight:400; letter-spacing:.5px;">
+      <span style="font-size:1rem;">🔻</span> Hover over any award card to reveal its sub-categories
+    </p>
+
+      <div class="honors-grid" id="honors-c"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       NOMINATION FORM
+  ══════════════════════════════════════ -->
+  <section class="section form-section" id="nominate">
+    <div class="section-eyebrow">Nomination Form</div>
+    <h2 class="section-title">Submit Your <em>Nomination</em></h2>
+    <p class="section-sub">
+      All fields marked <span style="color:var(--gold);font-weight:600;">*</span> are mandatory. Submitted information will be reviewed by the GEAA judging committee.
+    </p>
+
+    <div class="form-wrap">
+      <form id="nominationForm" novalidate>
+
+        <!-- ① Nomination Type -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">1</span> Nomination Type</div>
+          <div class="frow">
+            <div class="field">
+              <label>Nomination Type <span class="req">*</span></label>
+              <select id="nominationType" required>
+                <option value="">Select type</option>
+                <option value="Self-Nomination">Self-Nomination</option>
+                <option value="Fellow Alumni">Fellow Alumni</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ② Nominee Identity -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">2</span> Nominee Identity</div>
+          <div class="frow">
+            <div class="field">
+              <label>Full Name <span class="req">*</span></label>
+              <input type="text" id="fullName" placeholder="Enter full name" required />
+            </div>
+            <div class="field">
+              <label>Gender <span class="req">*</span></label>
+              <select id="gender" required>
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-Binary">Non-Binary</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Date of Birth <span class="req">*</span></label>
+              <input type="date" id="dob" required />
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ Academic Record -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">3</span> Academic Record</div>
+          <div class="frow">
+            <div class="field">
+              <label>University <span class="req">*</span></label>
+              <select id="institute" required>
+                <option value="">Select your university</option>
+                <option value="GEIT – Graphic Era Institute of Technology, Dehradun">GEIT – Graphic Era Institute of Technology, Dehradun</option>
+                <option value="GEU – Graphic Era University, Dehradun">GEU – Graphic Era University, Dehradun</option>
+                <option value="GEHU – Graphic Era Hill University, Dehradun">GEHU – Graphic Era Hill University, Dehradun</option>
+                <option value="GEHU – Graphic Era Hill University, Bhimtal">GEHU – Graphic Era Hill University, Bhimtal</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Course <span class="req">*</span></label>
+              <select id="course" required>
+                <option value="">Select course</option>
+                <optgroup label="Engineering (B.Tech / B.E.)">
+                  <option value="B.Tech – Computer Science & Engineering">B.Tech – Computer Science &amp; Engineering (CSE)</option>
+                  <option value="B.Tech – Electronics & Communication Engineering">B.Tech – Electronics &amp; Communication Engg (ECE)</option>
+                  <option value="B.Tech – Civil Engineering">B.Tech – Civil Engineering (CE)</option>
+                  <option value="B.Tech – Mechanical Engineering">B.Tech – Mechanical Engineering (ME)</option>
+                  <option value="B.Tech – Electrical Engineering">B.Tech – Electrical Engineering (EE)</option>
+                  <option value="B.Tech – Information Technology">B.Tech – Information Technology (IT)</option>
+                  <option value="B.Tech – Biotechnology">B.Tech – Biotechnology</option>
+                  <option value="B.Tech – Chemical Engineering">B.Tech – Chemical Engineering</option>
+                </optgroup>
+                <optgroup label="Postgraduate Engineering">
+                  <option value="M.Tech – Computer Science & Engineering">M.Tech – Computer Science &amp; Engineering</option>
+                  <option value="M.Tech – Electronics & Communication">M.Tech – Electronics &amp; Communication</option>
+                  <option value="M.Tech – Civil Engineering">M.Tech – Civil Engineering</option>
+                  <option value="M.Tech – Mechanical Engineering">M.Tech – Mechanical Engineering</option>
+                </optgroup>
+                <optgroup label="Computer Applications">
+                  <option value="BCA">BCA – Bachelor of Computer Applications</option>
+                  <option value="MCA">MCA – Master of Computer Applications</option>
+                </optgroup>
+                <optgroup label="IT & Management (BMIT)">
+                  <option value="BMIT">BMIT – Bachelor of Management &amp; IT</option>
+                </optgroup>
+                <optgroup label="Management">
+                  <option value="BBA">BBA – Bachelor of Business Administration</option>
+                  <option value="MBA">MBA – Master of Business Administration</option>
+                  <option value="MBA – Finance">MBA – Finance</option>
+                  <option value="MBA – Marketing">MBA – Marketing</option>
+                  <option value="MBA – Human Resource">MBA – Human Resource</option>
+                  <option value="MBA – Operations">MBA – Operations</option>
+                </optgroup>
+                <optgroup label="Commerce">
+                  <option value="B.Com">B.Com – Bachelor of Commerce</option>
+                  <option value="B.Com (Hons.)">B.Com (Hons.)</option>
+                  <option value="M.Com">M.Com – Master of Commerce</option>
+                </optgroup>
+                <optgroup label="Sciences">
+                  <option value="B.Sc – Computer Science">B.Sc – Computer Science</option>
+                  <option value="B.Sc – Physics">B.Sc – Physics</option>
+                  <option value="B.Sc – Mathematics">B.Sc – Mathematics</option>
+                  <option value="B.Sc – Biotechnology">B.Sc – Biotechnology</option>
+                  <option value="M.Sc – Computer Science">M.Sc – Computer Science</option>
+                  <option value="M.Sc – Mathematics">M.Sc – Mathematics</option>
+                  <option value="M.Sc – Physics">M.Sc – Physics</option>
+                  <option value="M.Sc – Biotechnology">M.Sc – Biotechnology</option>
+                </optgroup>
+                <optgroup label="Law">
+                  <option value="LLB">LLB – Bachelor of Laws</option>
+                  <option value="LLM">LLM – Master of Laws</option>
+                  <option value="BA LLB">BA LLB (Integrated)</option>
+                  <option value="BBA LLB">BBA LLB (Integrated)</option>
+                </optgroup>
+                <optgroup label="Pharmacy">
+                  <option value="B.Pharma">B.Pharma – Bachelor of Pharmacy</option>
+                  <option value="M.Pharma">M.Pharma – Master of Pharmacy</option>
+                  <option value="D.Pharma">D.Pharma – Diploma in Pharmacy</option>
+                </optgroup>
+                <optgroup label="Arts & Humanities">
+                  <option value="BA – English">BA – English</option>
+                  <option value="BA – Journalism & Mass Communication">BA – Journalism &amp; Mass Communication</option>
+                  <option value="MA – English">MA – English</option>
+                </optgroup>
+                <optgroup label="Research">
+                  <option value="Ph.D.">Ph.D. – Doctor of Philosophy</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option value="Other">Other (specify in branch field)</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label>Branch / Specialization <span class="req">*</span></label>
+              <input type="text" id="branch" placeholder="e.g. Computer Science" required />
+            </div>
+            <div class="field">
+              <label>Pass-out Year <span class="req">*</span></label>
+              <select id="passoutYear" required>
+                <option value="">Select year</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ④ Contact Details -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">4</span> Contact Details</div>
+          <div class="frow">
+            <div class="field">
+              <label>WhatsApp (with Country Code) <span class="req">*</span></label>
+              <input type="tel" id="whatsapp" placeholder="+91 98765 43210" required />
+            </div>
+            <div class="field">
+              <label>City <span class="req">*</span></label>
+              <input type="text" id="city" placeholder="Current city of residence" required />
+            </div>
+            <div class="field">
+              <label>Email Address <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="frow">
+            <div class="field" style="grid-column: 1 / -1;">
+              <label>LinkedIn Profile URL <span class="req">*</span></label>
+              <div class="input-icon-wrap">
+                <span class="input-icon">in</span>
+                <input type="url" id="linkedin" placeholder="https://linkedin.com/in/your-profile" style="padding-left:3rem;" required />
+              </div>
+              <span class="field-hint">Required — the committee uses this to verify your professional background</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑤ Professional Info -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">5</span> Professional Information</div>
+          <div class="frow">
+            <div class="field">
+              <label>Company / Organization <span class="req">*</span></label>
+              <input type="text" id="company" placeholder="Current employer or organization" required />
+            </div>
+            <div class="field">
+              <label>Current Designation <span class="req">*</span></label>
+              <input type="text" id="designation" placeholder="Your role or title" required />
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑥ Award Choice -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">6</span> Award Choice</div>
+          <div class="frow">
+            <div class="field">
+              <label>Award Type <span class="req">*</span></label>
+              <select id="awardType" required>
+                <option value="">Select category</option>
+                <option value="Category A — National (Indian origin, India)">Category A — National</option>
+                <option value="Category B — International (Indian origin, abroad)">Category B — International (Indian)</option>
+                <option value="Category C — International (International alumni, abroad)">Category C — International</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Achievement Category <span class="req">*</span></label>
+              <select id="achievementCategory" required>
+                <option value="">Select award</option>
+                <option value="Award for Professional &amp; Entrepreneurial Excellence">Award for Professional &amp; Entrepreneurial Excellence</option>
+                <option value="Award for Academic, Research &amp; Technology Leadership">Award for Academic, Research &amp; Technology Leadership</option>
+                <option value="Award for Arts, Culture, Sports &amp; Public Leadership">Award for Arts, Culture, Sports &amp; Public Leadership</option>
+                <option value="Award for Social Impact &amp; Community Leadership">Award for Social Impact &amp; Community Leadership</option>
+                <option value="Distinguished Alumni &amp; University Contribution Award">Distinguished Alumni &amp; University Contribution Award</option>
+                <option value="Award for Serving the Nation">Award for Serving the Nation</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div class="field field-full">
+              <label>Sub Category <span class="req">*</span></label>
+              <select id="subCategory" required>
+                <option value="">Select sub category</option>
+                <optgroup label="01 · Professional &amp; Entrepreneurial Excellence">
+                  <option value="Entrepreneurship &amp; Startup Leadership">Entrepreneurship &amp; Startup Leadership</option>
+                  <option value="Corporate &amp; Industry Leadership">Corporate &amp; Industry Leadership</option>
+                  <option value="Public Sector &amp; Government Professional Excellence">Public Sector &amp; Government Professional Excellence</option>
+                  <option value="Business Innovation &amp; Growth">Business Innovation &amp; Growth</option>
+                  <option value="Global Professional Achievement">Global Professional Achievement</option>
+                </optgroup>
+                <optgroup label="02 · Academic, Research &amp; Technology Leadership">
+                  <option value="Academic &amp; Teaching Excellence">Academic &amp; Teaching Excellence</option>
+                  <option value="Research, Patents &amp; Publications">Research, Patents &amp; Publications</option>
+                  <option value="Technology &amp; Digital Innovation">Technology &amp; Digital Innovation</option>
+                  <option value="Engineering &amp; Scientific Contributions">Engineering &amp; Scientific Contributions</option>
+                  <option value="Emerging Technologies &amp; Innovation Leadership">Emerging Technologies &amp; Innovation Leadership</option>
+                </optgroup>
+                <optgroup label="03 · Arts, Culture, Sports &amp; Public Leadership">
+                  <option value="Literature, Media &amp; Creative Arts">Literature, Media &amp; Creative Arts</option>
+                  <option value="Performing Arts &amp; Entertainment">Performing Arts &amp; Entertainment</option>
+                  <option value="Sports &amp; Athletic Excellence">Sports &amp; Athletic Excellence</option>
+                  <option value="Politics, Governance &amp; Public Leadership">Politics, Governance &amp; Public Leadership</option>
+                  <option value="Cultural Promotion &amp; Social Influence">Cultural Promotion &amp; Social Influence</option>
+                </optgroup>
+                <optgroup label="04 · Social Impact &amp; Community Leadership">
+                  <option value="Social Entrepreneurship &amp; NGO Leadership">Social Entrepreneurship &amp; NGO Leadership</option>
+                  <option value="Community Development &amp; Public Welfare">Community Development &amp; Public Welfare</option>
+                  <option value="Education, Healthcare &amp; Rural Development">Education, Healthcare &amp; Rural Development</option>
+                  <option value="Sustainability &amp; Environmental Conservation">Sustainability &amp; Environmental Conservation</option>
+                  <option value="Youth Empowerment &amp; Skill Development">Youth Empowerment &amp; Skill Development</option>
+                </optgroup>
+                <optgroup label="05 · Distinguished Alumni &amp; University Contribution">
+                  <option value="Alumni Chapter Leadership">Alumni Chapter Leadership</option>
+                  <option value="Contribution to Placements &amp; Mentorship">Contribution to Placements &amp; Mentorship</option>
+                  <option value="Industry Collaboration &amp; Institutional Partnerships">Industry Collaboration &amp; Institutional Partnerships</option>
+                  <option value="University Branding &amp; Global Representation">University Branding &amp; Global Representation</option>
+                  <option value="Lifetime Contribution to Alma Mater">Lifetime Contribution to Alma Mater</option>
+                </optgroup>
+                <optgroup label="06 · Award for Serving the Nation">
+                  <option value="Armed Forces, Defense &amp; National Security">Armed Forces, Defense &amp; National Security</option>
+                  <option value="Civil Services, Governance &amp; Public Administration">Civil Services, Governance &amp; Public Administration</option>
+                  <option value="Healthcare, Law &amp; Public Welfare">Healthcare, Law &amp; Public Welfare</option>
+                  <option value="Science, Technology &amp; Nation Building">Science, Technology &amp; Nation Building</option>
+                  <option value="Social Reform &amp; Humanitarian Service">Social Reform &amp; Humanitarian Service</option>
+                </optgroup>
+              </select>
+              <span class="field-hint">Select the sub category that best describes the nominee's area of distinction</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑦ Achievement Details -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">7</span> Achievement Details</div>
+          <div class="field">
+            <label>Describe the Achievement in Detail — Max 1000 words <span class="req">*</span></label>
+            <textarea id="achievementDetails"
+              placeholder="Describe the nominee's achievements, leadership, social impact, and any recognition received. Be specific and provide measurable outcomes where possible."
+              required></textarea>
+            <div class="wcount" id="wordCounter">0 / 1000 words</div>
+          </div>
+        </div>
+
+        <!-- ⑧ Supporting Documents -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">8</span> Supporting Documents</div>
+          <div class="upload-zone" id="docZone">
+            <input type="file" id="docFiles" multiple
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.ppt,.pptx,.xls,.xlsx" />
+            <span class="upload-ico">📎</span>
+            <div class="upload-lbl">Click or drag files here to upload supporting documents</div>
+            <div class="upload-note">PDF, DOC, DOCX, JPG, PNG, PPT accepted &nbsp;·&nbsp; Up to 10 files &nbsp;·&nbsp; Max 5 MB per file</div>
+          </div>
+          <div class="file-list" id="docFileList"></div>
+        </div>
+
+        <!-- ⑨ Media Upload -->
+        <div class="fgroup">
+          <div class="fgroup-head"><span class="fgroup-num">9</span> Photos / Videos of Work</div>
+          <div class="upload-zone" id="mediaZone">
+            <input type="file" id="mediaFiles" multiple accept="image/*,video/*" />
+            <span class="upload-ico">📸</span>
+            <div class="upload-lbl">Click or drag files here to upload photos or videos</div>
+            <div class="upload-note">Images &amp; Videos accepted &nbsp;·&nbsp; Up to 10 files &nbsp;·&nbsp; Max 5 MB per file</div>
+          </div>
+          <div class="file-list" id="mediaFileList"></div>
+        </div>
+
+        <!-- ⑩ Privacy Consent -->
+        <div class="fgroup" style="margin-bottom:2rem;">
+          <div class="fgroup-head"><span class="fgroup-num">10</span> Privacy &amp; Consent</div>
+          <label class="consent-label" for="privacyConsent">
+            <input type="checkbox" id="privacyConsent" required />
+            <span class="consent-box"></span>
+            <span class="consent-text">
+              <strong style="color:var(--navy);font-weight:600;">Privacy Note:</strong>
+              Information submitted through this form, including your name, achievements, and photographs / videos of work, may be used for publicity purposes on GEAA's official social media channels and the alumni portal. Your data is handled with care and in accordance with GEAA's privacy commitments.
+              <span style="color:var(--gold);font-weight:600;"> I understand and give my consent. <span class="req">*</span></span>
+            </span>
+          </label>
+          <span id="consentErr" style="display:none;font-size:.72rem;color:#ff6b6b;margin-top:.5rem;display:none;">Please tick this box to proceed with your nomination.</span>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit-wrap">
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="btn-text">◆ &nbsp;Submit Nomination</span>
+            <span class="spinner">↻</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-logo">GEAA</div>
+    <div class="footer-divider"></div>
+    <p class="footer-contact">
+      For any queries, reach out to the GEAA team at
+      <a href="mailto:alumni@geu.ac.in">alumni@geu.ac.in</a>
+    </p>
+    <p class="footer-privacy">
+      <strong style="color:var(--navy);font-weight:700;">Privacy Note:</strong>
+      Information submitted through this form, including your name, achievements, and photographs, may be used for publicity purposes on GEAA's official social media channels and the alumni portal. Your data is handled with care and in accordance with GEAA's privacy commitments.
+    </p>
+    <p class="footer-copy">
+      &copy; 2027 Graphic Era Alumni Association &nbsp;·&nbsp; All Rights Reserved
+    </p>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════
+       SUCCESS MODAL
+  ══════════════════════════════════════ -->
+  <div class="modal-bg" id="successModal">
+    <div class="modal">
+      <div class="modal-ico">🏆</div>
+      <h3>Nomination Submitted!</h3>
+      <p>
+        Thank you for your nomination. The GEAA judging committee will carefully review your submission. Winners will be honoured at the prestigious Alumni Awards Ceremony 2027.
+      </p>
+      <button class="btn-modal" onclick="closeModal('successModal')">Close</button>
+    </div>
+  </div>
+
+  <!-- ERROR MODAL -->
+  <div class="modal-bg" id="errorModal">
+    <div class="modal">
+      <div class="modal-ico">⚠️</div>
+      <h3>Submission Failed</h3>
+      <p id="errorMsg">
+        Something went wrong. Please try again or contact us at alumni@geu.ac.in.
+      </p>
+      <button class="btn-modal" onclick="closeModal('errorModal')">Try Again</button>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════ -->
+  <script>
+  /* ── CONFIGURATION ───────────────────────────────────────────
+     Replace the value below with your deployed Apps Script URL.
+     ──────────────────────────────────────────────────────────── */
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzllfSK0x3gI8EIpQ2QhP9OvK7S0TT7OGKjcobEpPGQPcr9TZHcRrPqsEm_gVWBYNRv/exec';
+
+  /* ── HONORS DATA ─────────────────────────────────────────── */
+  const HONORS = [
+    {
+      title: 'Award for Professional & Entrepreneurial Excellence',
+      desc:  'Recognizing alumni who have demonstrated outstanding leadership, innovation, business growth, and professional success across industries and enterprises.',
+      subs:  ['Entrepreneurship & Startup Leadership','Corporate & Industry Leadership','Public Sector & Government Professional Excellence','Business Innovation & Growth','Global Professional Achievement']
+    },
+    {
+      title: 'Award for Academic, Research & Technology Leadership',
+      desc:  'Honouring alumni who have made exceptional contributions in academics, research, science, innovation, and technology.',
+      subs:  ['Academic & Teaching Excellence','Research, Patents & Publications','Technology & Digital Innovation','Engineering & Scientific Contributions','Emerging Technologies & Innovation Leadership']
+    },
+    {
+      title: 'Award for Arts, Culture, Sports & Public Leadership',
+      desc:  'Celebrating alumni who have excelled in arts, media, literature, sports, politics, and public life.',
+      subs:  ['Literature, Media & Creative Arts','Performing Arts & Entertainment','Sports & Athletic Excellence','Politics, Governance & Public Leadership','Cultural Promotion & Social Influence']
+    },
+    {
+      title: 'Award for Social Impact & Community Leadership',
+      desc:  'Recognizing alumni who have created meaningful impact through social initiatives, sustainability efforts, and community development.',
+      subs:  ['Social Entrepreneurship & NGO Leadership','Community Development & Public Welfare','Education, Healthcare & Rural Development','Sustainability & Environmental Conservation','Youth Empowerment & Skill Development']
+    },
+    {
+      title: 'Distinguished Alumni & University Contribution Award',
+      desc:  'Presented to alumni who have significantly contributed to the growth, reputation, and development of the university and alumni ecosystem.',
+      subs:  ['Alumni Chapter Leadership','Contribution to Placements & Mentorship','Industry Collaboration & Institutional Partnerships','University Branding & Global Representation','Lifetime Contribution to Alma Mater']
+    },
+    {
+      title: 'Award for Serving the Nation',
+      desc:  'Recognizing alumni who have made exceptional contributions toward nation-building through public service, defense, governance, healthcare, innovation, and social leadership.',
+      subs:  ['Armed Forces, Defense & National Security','Civil Services, Governance & Public Administration','Healthcare, Law & Public Welfare','Science, Technology & Nation Building','Social Reform & Humanitarian Service']
+    },
+  ];
+
+  /* ── BUILD HONORS GRIDS ──────────────────────────────────── */
+  ['a','b','c'].forEach(cat => {
+    const grid = document.getElementById(`honors-${cat}`);
+    grid.innerHTML = HONORS.map((h, i) => `
+      <div class="honor-card">
+        <div class="honor-card-inner">
+
+          <div class="honor-front">
+            <span class="honor-num">0${i+1}</span>
+            <div>
+              <span class="honor-text">${h.title}</span>
+              <span class="honor-desc">${h.desc}</span>
+            </div>
+          </div>
+
+          <div class="honor-back">
+            <div class="honor-back-title">◆ &nbsp;Sub Categories</div>
+            <ul class="honor-back-list">
+              ${h.subs.map(s => `<li>${s}</li>`).join('')}
+            </ul>
+          </div>
+
+        </div>
+      </div>`).join('');
+  });
+
+  /* ── PASS-OUT YEAR DROPDOWN ──────────────────────────────── */
+  const yearSel = document.getElementById('passoutYear');
+  const now = new Date().getFullYear();
+  for (let y = now; y >= 1990; y--) {
+    yearSel.insertAdjacentHTML('beforeend',`<option value="${y}">${y}</option>`);
   }
-  .nav-brand{
-    display:flex;align-items:center;gap:10px;text-decoration:none;
+
+  /* ── CATEGORY TABS ───────────────────────────────────────── */
+  document.querySelectorAll('.cat-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(`panel-${cat}`).classList.add('active');
+    });
+  });
+
+  /* ── WORD COUNTER ────────────────────────────────────────── */
+  const textarea = document.getElementById('achievementDetails');
+  const counter  = document.getElementById('wordCounter');
+
+  textarea.addEventListener('input', () => {
+    const words = textarea.value.trim() === '' ? 0 : textarea.value.trim().split(/\s+/).length;
+    counter.textContent = `${words} / 1000 words`;
+    counter.className = 'wcount';
+    if (words > 900)  counter.classList.add('warn');
+    if (words > 1000) {
+      counter.classList.add('over');
+      textarea.value = textarea.value.trim().split(/\s+/).slice(0,1000).join(' ');
+      counter.textContent = '1000 / 1000 words';
+    }
+  });
+
+  /* ── FILE UPLOAD DISPLAY ─────────────────────────────────── */
+  function setupUpload(inputId, listId) {
+    const inp  = document.getElementById(inputId);
+    const list = document.getElementById(listId);
+
+    inp.addEventListener('change', () => {
+      list.innerHTML = '';
+      const files = Array.from(inp.files).slice(0, 10);
+      files.forEach(f => {
+        const mb = (f.size / 1048576).toFixed(2);
+        list.insertAdjacentHTML('beforeend', `
+          <div class="file-item">
+            <span class="file-item-name">📄 ${f.name}</span>
+            <span class="file-item-size">${mb} MB</span>
+          </div>`);
+      });
+      if (inp.files.length > 10) {
+        list.insertAdjacentHTML('beforeend',
+          `<p style="font-size:.72rem;color:var(--gold-dim);margin-top:.35rem;">Only the first 10 files will be submitted.</p>`);
+      }
+    });
   }
-  .nav-brand-logo{
-    width:36px;height:36px;border-radius:50%;
-    background:linear-gradient(135deg,var(--gold),var(--gold-light));
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Playfair Display',serif;font-weight:900;font-size:14px;color:#0d1b2a;
-    flex-shrink:0;
+
+  setupUpload('docFiles',   'docFileList');
+  setupUpload('mediaFiles', 'mediaFileList');
+
+  /* ── FILE → BASE64 ───────────────────────────────────────── */
+  function fileToBase64(file) {
+    return new Promise((res) => {
+      if (file.size > 5 * 1048576) {
+        res({ name: file.name, skipped: true, reason: 'Exceeds 5 MB limit' });
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => res({
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        data: reader.result.split(',')[1]
+      });
+      reader.onerror = () => res({ name: file.name, skipped: true, reason: 'Read error' });
+      reader.readAsDataURL(file);
+    });
   }
-  .nav-brand-text{
-    font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
-    color:#fff;letter-spacing:0.5px;line-height:1.1;
+
+  /* ── FORM VALIDATION ─────────────────────────────────────── */
+  const REQUIRED_IDS = [
+    'nominationType','fullName','gender','dob',
+    'institute','course','branch','passoutYear',
+    'whatsapp','city','email','linkedin',
+    'company','designation',
+    'awardType','achievementCategory','subCategory','achievementDetails'
+  ];
+
+  function validate() {
+    let ok = true;
+    REQUIRED_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.classList.add('err');
+        ok = false;
+        el.addEventListener('input', () => el.classList.remove('err'), { once: true });
+        el.addEventListener('change', () => el.classList.remove('err'), { once: true });
+      }
+    });
+    // Basic email check
+    const emailEl = document.getElementById('email');
+    if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+      emailEl.classList.add('err'); ok = false;
+    }
+    // Consent checkbox check
+    const consent = document.getElementById('privacyConsent');
+    const consentLabel = consent.closest('.consent-label');
+    if (!consent.checked) {
+      consentLabel.classList.add('err-consent');
+      ok = false;
+      consent.addEventListener('change', () => consentLabel.classList.remove('err-consent'), { once: true });
+    }
+    return ok;
   }
+
+  /* ── MODAL HELPERS ───────────────────────────────────────── */
+  function openModal(id)  { document.getElementById(id).classList.add('open'); }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+  /* ── FORM SUBMIT ─────────────────────────────────────────── */
+  document.getElementById('nominationForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!validate()) {
+      const firstErr = document.querySelector('.err');
+      if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.classList.add('loading');
+    btn.querySelector('.btn-text').textContent = 'Submitting…';
+
+    try {
+      /* Encode files */
+      const docInputs   = Array.from(document.getElementById('docFiles').files).slice(0,10);
+      const mediaInputs = Array.from(document.getElementById('mediaFiles').files).slice(0,10);
+
+      const [docs, media] = await Promise.all([
+        Promise.all(docInputs.map(fileToBase64)),
+        Promise.all(mediaInputs.map(fileToBase64))
+      ]);
+
+      const payload = {
+        timestamp:           new Date().toISOString(),
+        nominationType:      document.getElementById('nominationType').value,
+        fullName:            document.getElementById('fullName').value,
+        gender:              document.getElementById('gender').value,
+        dob:                 document.getElementById('dob').value,
+        institute:           document.getElementById('institute').value,
+        course:              document.getElementById('course').value,
+        branch:              document.getElementById('branch').value,
+        passoutYear:         document.getElementById('passoutYear').value,
+        whatsapp:            document.getElementById('whatsapp').value,
+        city:                document.getElementById('city').value,
+        email:               document.getElementById('email').value,
+        linkedin:            document.getElementById('linkedin').value,
+        company:             document.getElementById('company').value,
+        designation:         document.getElementById('designation').value,
+        awardType:           document.getElementById('awardType').value,
+        achievementCategory: document.getElementById('achievementCategory').value,
+        subCategory:         document.getElementById('subCategory').value,
+        achievementDetails:  document.getElementById('achievementDetails').value,
+        documents:           docs,
+        media:               media
+      };
+
+      /* POST — using text/plain to avoid CORS preflight with Apps Script */
+      await fetch(SCRIPT_URL, {
+        method:  'POST',
+        mode:    'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body:    JSON.stringify(payload)
+      });
+
+      /* no-cors gives opaque response; treat reaching here as success */
+      openModal('successModal');
+      document.getElementById('nominationForm').reset();
+      document.getElementById('docFileList').innerHTML   = '';
+      document.getElementById('mediaFileList').innerHTML = '';
+      counter.textContent = '0 / 1000 words';
+      counter.className   = 'wcount';
+
+    } catch (err) {
+      document.getElementById('errorMsg').textContent =
+        `Error: ${err.message}. Please try again or email alumni@geu.ac.in`;
+      openModal('errorModal');
+    } finally {
+      btn.disabled = false;
+      btn.classList.remove('loading');
+      btn.querySelector('.btn-text').textContent = '◆  Submit Nomination';
+    }
+  });
+
+  /* ── ANIMATED TRACKER COUNTERS ──────────────────────────── */
+  function animateCounter(el, target, duration, prefix, suffix) {
+    const start = performance.now();
+    const isFloat = (target % 1 !== 0);
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = prefix + target.toLocaleString() + suffix;
+    }
+    requestAnimationFrame(update);
+  }
+
+  // Observe tracker section and trigger once visible
+  const trackerSection = document.getElementById('tracker');
+  let countersStarted = false;
+  const trackerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !countersStarted) {
+        countersStarted = true;
+        animateCounter(document.getElementById('tVotes'),      9248, 2000, '', '');
+        animateCounter(document.getElementById('tNominees'),    242, 1600, '', '');
+        animateCounter(document.getElementById('tCategories'),    6,  900, '', '');
+        animateCounter(document.getElementById('tSubCategories'), 30, 1200, '', '');
+      }
+    });
+  }, { threshold: 0.3 });
+  trackerObserver.observe(trackerSection);
+
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* ── PARTICLE SYSTEM ─────────────────────────────────────── */
+  (function() {
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x    = rand(0, W);
+        this.y    = rand(0, H);
+        this.r    = rand(0.5, 2.2);
+        this.vx   = rand(-0.18, 0.18);
+        this.vy   = rand(-0.35, -0.08);
+        this.life = rand(0.3, 1);
+        this.maxLife = this.life;
+        this.gold = Math.random() > 0.3;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life -= 0.0015;
+        if (this.life <= 0 || this.y < -10) this.reset();
+      }
+      draw() {
+        const alpha = Math.min(this.life / this.maxLife * 1.5, 0.55);
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        if (this.gold) {
+          ctx.fillStyle = `rgba(250,208,5,${alpha * 0.7})`;
+        } else {
+          ctx.fillStyle = `rgba(180,160,255,${alpha * 0.35})`;
+        }
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 90; i++) particles.push(new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+  </script>
+</body>
+</html>
   .nav-brand-sub{font-size:10px;color:rgba(201,168,76,0.8);letter-spacing:1.5px;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:300;}
   .nav-links{display:flex;align-items:center;gap:0.2rem;}
   .nav-link{
