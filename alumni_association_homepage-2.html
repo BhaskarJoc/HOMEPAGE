@@ -1,0 +1,510 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#0d1b2a;--gold:#c9a84c;--gold-light:#f0d080;--gold-pale:#fdf6e3;
+    --cream:#faf8f3;--text:#1a1a2e;--muted:#5a6270;--border:#e8e0cc;
+    --card-bg:#ffffff;--section-alt:#f4f0e8;
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text)}
+
+  .hero{
+    background:linear-gradient(135deg,#0d1b2a 0%,#1a3350 60%,#0f2640 100%);
+    padding:3.5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 80% 60% at 50% 120%,rgba(201,168,76,0.18),transparent);
+    pointer-events:none;
+  }
+  .hero-badge{
+    display:inline-block;background:rgba(201,168,76,0.18);border:1px solid rgba(201,168,76,0.4);
+    color:var(--gold-light);font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    padding:5px 16px;border-radius:20px;margin-bottom:1.4rem;font-weight:500;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2rem,5vw,3.2rem);
+    line-height:1.15;margin-bottom:1rem;font-weight:900;
+  }
+  .hero h1 span{color:var(--gold-light);}
+  .hero p{color:rgba(255,255,255,0.72);font-size:1rem;max-width:520px;margin:0 auto 2rem;line-height:1.7;font-weight:300;}
+  .hero-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gold);color:#fff;font-weight:500;font-size:0.95rem;
+    padding:13px 28px;border-radius:40px;text-decoration:none;border:none;cursor:pointer;
+    transition:background 0.2s,transform 0.15s;
+  }
+  .hero-cta:hover{background:var(--gold-light);color:#0d1b2a;transform:translateY(-1px);}
+
+  .stats-bar{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    background:var(--navy);padding:1.4rem 2rem;gap:1px;
+  }
+  .stat{text-align:center;padding:0.8rem 0.5rem;}
+  .stat-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--gold-light);}
+  .stat-lbl{font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px;}
+
+  .section{padding:3rem 1.5rem;}
+  .section-alt{background:var(--section-alt);}
+  .section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.5rem;}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:0.6rem;}
+  .section-sub{color:var(--muted);font-size:0.92rem;line-height:1.7;max-width:560px;margin-bottom:1.8rem;}
+
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+  .feature-card{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:12px;
+    padding:1.4rem;transition:border-color 0.2s,transform 0.2s;cursor:default;
+  }
+  .feature-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .feature-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+  .feature-card h3{font-size:0.95rem;font-weight:500;color:var(--navy);margin-bottom:0.4rem;}
+  .feature-card p{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+
+  .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.5rem;}
+  .impact-card{
+    background:var(--navy);border-radius:12px;padding:1.5rem;text-align:center;
+    border-bottom:3px solid var(--gold);
+  }
+  .impact-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold-light);font-weight:700;}
+  .impact-desc{font-size:0.82rem;color:rgba(255,255,255,0.65);margin-top:4px;line-height:1.5;}
+
+  /* Talent Form Section (replaces WhatsApp chapters) */
+  .talent-section{padding:3rem 1.5rem;background:var(--cream);}
+  .talent-form-card{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:16px;
+    padding:2rem;max-width:780px;
+  }
+  .talent-form-card h3{
+    font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;
+    color:var(--navy);margin-bottom:0.4rem;
+  }
+  .talent-form-card p{font-size:0.85rem;color:var(--muted);line-height:1.6;margin-bottom:1.5rem;}
+  .talent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1rem;}
+  .t-field{display:flex;flex-direction:column;gap:5px;}
+  .t-field label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;}
+  .t-field input,.t-field select,.t-field textarea{
+    border:1px solid var(--border);border-radius:8px;padding:9px 12px;
+    font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text);
+    background:#fff;outline:none;transition:border-color 0.2s,box-shadow 0.2s;
+    width:100%;
+  }
+  .t-field textarea{resize:vertical;min-height:90px;}
+  .t-field input:focus,.t-field select:focus,.t-field textarea:focus{
+    border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12);
+  }
+  .t-field-full{grid-column:1/-1;}
+  .t-submit{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gold);color:#fff;font-weight:500;font-size:0.9rem;
+    padding:11px 24px;border-radius:40px;border:none;cursor:pointer;
+    transition:background 0.2s,transform 0.15s;margin-top:0.5rem;
+  }
+  .t-submit:hover{background:var(--gold-light);color:#0d1b2a;transform:translateY(-1px);}
+  .talent-note{font-size:0.78rem;color:var(--muted);margin-top:0.75rem;line-height:1.5;}
+  .t-success{
+    display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;
+    padding:1rem 1.2rem;color:#15803d;font-size:0.88rem;margin-top:1rem;
+  }
+
+  .portal-card{
+    background:linear-gradient(135deg,#0d1b2a,#1a3350);
+    border-radius:16px;padding:2rem;display:flex;flex-wrap:wrap;align-items:center;
+    gap:1.5rem;justify-content:space-between;margin-top:1rem;
+  }
+  .portal-text h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:4px;}
+  .portal-text p{color:rgba(255,255,255,0.6);font-size:0.85rem;max-width:380px;line-height:1.6;}
+  .portal-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gold);color:#fff;font-size:0.9rem;font-weight:500;
+    padding:12px 22px;border-radius:40px;text-decoration:none;white-space:nowrap;
+    transition:background 0.2s;
+  }
+  .portal-btn:hover{background:var(--gold-light);color:#0d1b2a;}
+
+  /* Become a Member section — white tab style */
+  .member-section{padding:3rem 1.5rem;background:#fff;}
+  .member-card{
+    background:#fff;border:1px solid var(--border);border-radius:16px;
+    padding:2rem;display:flex;flex-wrap:wrap;align-items:center;
+    gap:1.5rem;justify-content:space-between;max-width:760px;
+    box-shadow:0 2px 16px rgba(13,27,42,0.07);
+  }
+  .member-text h3{
+    font-family:'Playfair Display',serif;color:var(--navy);
+    font-size:1.3rem;margin-bottom:6px;
+  }
+  .member-text p{color:var(--muted);font-size:0.85rem;max-width:380px;line-height:1.6;}
+  .member-features{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .member-feature{
+    font-size:11px;background:var(--gold-pale);color:#7a5c00;
+    padding:4px 10px;border-radius:6px;border:1px solid #e8d48a;
+    font-weight:500;letter-spacing:0.3px;
+  }
+  .member-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--navy);color:#fff;font-size:0.9rem;font-weight:500;
+    padding:12px 22px;border-radius:40px;text-decoration:none;white-space:nowrap;
+    transition:background 0.2s,transform 0.15s;border:none;cursor:pointer;
+  }
+  .member-btn:hover{background:var(--gold);transform:translateY(-1px);}
+
+  .connect-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;margin-top:1.2rem;}
+  .connect-link{
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    background:var(--card-bg);border:1px solid var(--border);border-radius:12px;
+    padding:1.2rem 0.8rem;text-decoration:none;color:var(--navy);
+    font-size:0.82rem;font-weight:500;transition:all 0.2s;text-align:center;
+  }
+  .connect-link i{font-size:1.5rem;color:var(--muted);}
+  .connect-link:hover{background:var(--navy);color:var(--gold-light);border-color:var(--navy);}
+  .connect-link:hover i{color:var(--gold-light);}
+
+  .dept-section{margin-top:2.5rem;}
+  .dept-campus{margin-bottom:1.8rem;}
+  .campus-name{
+    font-size:0.8rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--gold);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:0.8rem;
+  }
+  .dept-pills{display:flex;flex-wrap:wrap;gap:8px;}
+  .dept-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    border:1px solid var(--border);border-radius:6px;padding:6px 12px;
+    font-size:0.78rem;color:var(--navy);text-decoration:none;
+    background:var(--card-bg);transition:all 0.15s;
+  }
+  .dept-pill i{font-size:13px;color:var(--gold);}
+  .dept-pill:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .dept-pill:hover i{color:var(--gold-light);}
+
+  /* Awards embed iframe wrapper */
+  .awards-embed-wrap{
+    border-radius:16px;overflow:hidden;border:1px solid var(--border);
+    box-shadow:0 4px 24px rgba(13,27,42,0.1);
+    background:#0d1b2a;
+    min-height:600px;
+    position:relative;
+  }
+  .awards-embed-wrap iframe{
+    width:100%;min-height:680px;border:none;display:block;
+  }
+  .awards-embed-fallback{
+    padding:2rem;text-align:center;color:rgba(255,255,255,0.7);font-size:0.88rem;
+    display:none;
+  }
+
+  .footer-note{
+    text-align:center;padding:1.2rem;font-size:0.78rem;
+    color:var(--muted);background:var(--navy);color:rgba(255,255,255,0.4);
+  }
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+<h2 class="sr-only">Alumni Association — dedicated page with features, impact, chapters, awards, and connect links</h2>
+
+<div class="hero">
+  <div class="hero-badge">Est. 1965 · Alumni Association</div>
+  <h1>Building Bonds That<br><span>Last a Lifetime</span></h1>
+  <p>A global network of changemakers, leaders, and innovators — united by a shared alma mater and a commitment to giving back.</p>
+  <a href="https://gehu.almaconnect.com" target="_blank" class="hero-cta">
+    <i class="ti ti-user-plus" aria-hidden="true"></i> Become a Member
+  </a>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">42,000+</div><div class="stat-lbl">Alumni Worldwide</div></div>
+  <div class="stat"><div class="stat-num">68</div><div class="stat-lbl">Countries</div></div>
+  <div class="stat"><div class="stat-num">18</div><div class="stat-lbl">Active Chapters</div></div>
+  <div class="stat"><div class="stat-num">₹3.2 Cr</div><div class="stat-lbl">Scholarships Awarded</div></div>
+</div>
+
+<div class="section">
+  <div class="section-label">About Us</div>
+  <div class="section-title">What is the Alumni Association?</div>
+  <div class="section-sub">Our Alumni Association is a thriving community dedicated to fostering lifelong connections between graduates and the institution. We empower alumni through mentorship, networking, scholarships, and cultural engagement — across campuses and across the globe.</div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎓</div>
+      <h3>Lifelong Membership</h3>
+      <p>Automatic membership upon graduation, with access to networks, events, and resources for life.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤝</div>
+      <h3>Mentorship Programme</h3>
+      <p>Connect senior alumni with current students and fresh graduates to guide careers and growth.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3>Annual Convocation</h3>
+      <p>Grand reunions celebrating milestones, achievements, and the spirit of the alma mater.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📚</div>
+      <h3>Scholarships & Grants</h3>
+      <p>Alumni-funded scholarships supporting meritorious students from all walks of life.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌐</div>
+      <h3>Global Events</h3>
+      <p>Regular meetups, webinars, and forums spanning every continent our alumni call home.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💼</div>
+      <h3>Career & Placement</h3>
+      <p>Referrals, job boards, and exclusive hiring events powered by the alumni network.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section section-alt">
+  <div class="section-label">Our Impact</div>
+  <div class="section-title">Numbers That Speak</div>
+  <div class="section-sub">From grassroots initiatives to global boardrooms — our alumni are making a measurable difference.</div>
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="impact-num">1,200+</div>
+      <div class="impact-desc">Students mentored in the last 3 years</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-num">₹3.2 Cr</div>
+      <div class="impact-desc">Scholarship corpus raised by alumni</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-num">350+</div>
+      <div class="impact-desc">Events conducted across all chapters</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-num">94%</div>
+      <div class="impact-desc">Placement rate aided by alumni referrals</div>
+    </div>
+  </div>
+</div>
+
+<!-- TALENT CONNECT — replaces WhatsApp chapter tabs -->
+<div class="talent-section">
+  <div class="section-label">Talent Connect</div>
+  <div class="section-title">Share Your Profile with Us</div>
+  <div class="section-sub">Fill in your details below. Our team will verify your information and add you to the right alumni chapter. No WhatsApp groups to hunt for — we'll reach out directly.</div>
+
+  <div class="talent-form-card">
+    <h3>Alumni Talent Registration</h3>
+    <p>Share your background and our team will connect you with the right people after verification. All fields marked * are required.</p>
+
+    <div class="talent-grid">
+      <div class="t-field">
+        <label>Full Name *</label>
+        <input type="text" id="t-name" placeholder="Your full name" />
+      </div>
+      <div class="t-field">
+        <label>Batch / Pass-out Year *</label>
+        <input type="text" id="t-batch" placeholder="e.g. 2019" />
+      </div>
+      <div class="t-field">
+        <label>Department / Branch *</label>
+        <input type="text" id="t-dept" placeholder="e.g. Computer Science" />
+      </div>
+      <div class="t-field">
+        <label>Email Address *</label>
+        <input type="email" id="t-email" placeholder="you@email.com" />
+      </div>
+      <div class="t-field">
+        <label>WhatsApp Number *</label>
+        <input type="tel" id="t-phone" placeholder="+91 98765 43210" />
+      </div>
+      <div class="t-field">
+        <label>Current City *</label>
+        <input type="text" id="t-city" placeholder="City you're based in" />
+      </div>
+      <div class="t-field">
+        <label>Current Designation</label>
+        <input type="text" id="t-designation" placeholder="e.g. Software Engineer" />
+      </div>
+      <div class="t-field">
+        <label>Current Company / Organisation</label>
+        <input type="text" id="t-company" placeholder="Where you work" />
+      </div>
+      <div class="t-field t-field-full">
+        <label>LinkedIn Profile URL</label>
+        <input type="url" id="t-linkedin" placeholder="https://linkedin.com/in/your-profile" />
+      </div>
+      <div class="t-field t-field-full">
+        <label>Brief About You</label>
+        <textarea id="t-about" placeholder="Share a short bio, skills, or what you'd like to contribute to the alumni community…"></textarea>
+      </div>
+    </div>
+
+    <button class="t-submit" onclick="submitTalentForm()">
+      <i class="ti ti-send" aria-hidden="true"></i> Submit for Verification
+    </button>
+    <p class="talent-note">ℹ️ Our alumni team will review your submission and add you to the appropriate chapter within 3–5 business days. Your details are kept confidential and used solely for alumni network purposes.</p>
+    <div class="t-success" id="t-success">
+      ✅ Thank you! Your details have been submitted successfully. Our team will verify and connect with you soon.
+    </div>
+  </div>
+</div>
+
+<!-- BECOME A MEMBER — white tab linking to AlmaConnect -->
+<div class="member-section">
+  <div class="section-label">Membership</div>
+  <div class="section-title">Become a Member</div>
+  <div class="section-sub">Join the official alumni portal to unlock your profile, explore the directory, register for events, and reconnect with batchmates — all in one place.</div>
+
+  <div class="member-card">
+    <div class="member-text">
+      <h3>Access Your Alumni Portal</h3>
+      <p>GEHU AlmaConnect is your one-stop platform for everything alumni — your profile, your story, your network, your documents, and your events.</p>
+      <div class="member-features">
+        <span class="member-feature">🧑‍💼 Alumni Profile</span>
+        <span class="member-feature">📖 Update Your Story</span>
+        <span class="member-feature">🔍 Directory Explorer</span>
+        <span class="member-feature">📅 Event Registration</span>
+        <span class="member-feature">👥 Connect with Batchmates</span>
+        <span class="member-feature">📄 Document Requests</span>
+      </div>
+    </div>
+    <a href="https://gehu.almaconnect.com" target="_blank" class="member-btn">
+      <i class="ti ti-external-link" aria-hidden="true"></i> Join on AlmaConnect
+    </a>
+  </div>
+</div>
+
+<!-- GRAPHIC ERA WARDS — embedded from index.html content -->
+<div class="section">
+  <div class="section-label">Recognition</div>
+  <div class="section-title">GEAA Distinguished Alumni Awards</div>
+  <div class="section-sub">Honouring excellence across industry, innovation, and impact. The annual GEAA Awards celebrate alumni who have carried the spirit of Graphic Era to every corner of the globe.</div>
+
+  <div class="awards-embed-wrap">
+    <iframe
+      src="/mnt/user-data/uploads/index.html"
+      title="GEAA Distinguished Alumni Awards 2027"
+      scrolling="yes"
+      allowfullscreen
+      onload="this.style.minHeight=(this.contentWindow.document.body.scrollHeight+40)+'px'"
+    ></iframe>
+    <div class="awards-embed-fallback">
+      <p>To view the full Awards portal, <a href="index.html" target="_blank" style="color:var(--gold)">open it here</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ALMA CONNECT PORTAL -->
+<div class="section section-alt">
+  <div class="section-label">Alma Connect</div>
+  <div class="section-title">Your Alumni Portal</div>
+  <div class="portal-card">
+    <div class="portal-text">
+      <h3>Login to GEHU Alma Connect</h3>
+      <p>Access your alumni profile, update your story, explore the directory, register for events, connect with batchmates, and submit educational document requests — all in one place.</p>
+    </div>
+    <a href="https://gehu.almaconnect.com" target="_blank" class="portal-btn">
+      <i class="ti ti-external-link" aria-hidden="true"></i> Go to Alma Connect
+    </a>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Stay Connected</div>
+  <div class="section-title">Follow & Connect With Us</div>
+  <div class="section-sub">Stay up to date with news, reunions, and stories from across the alumni community.</div>
+  <div class="connect-grid">
+    <a href="https://linkedin.com" class="connect-link">
+      <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+      LinkedIn
+    </a>
+    <a href="https://instagram.com" class="connect-link">
+      <i class="ti ti-brand-instagram" aria-hidden="true"></i>
+      Instagram
+    </a>
+    <a href="https://twitter.com" class="connect-link">
+      <i class="ti ti-brand-x" aria-hidden="true"></i>
+      Twitter / X
+    </a>
+    <a href="https://facebook.com" class="connect-link">
+      <i class="ti ti-brand-facebook" aria-hidden="true"></i>
+      Facebook
+    </a>
+    <a href="mailto:alumni@university.edu" class="connect-link">
+      <i class="ti ti-mail" aria-hidden="true"></i>
+      Email Us
+    </a>
+    <a href="https://gehu.almaconnect.com" target="_blank" class="connect-link">
+      <i class="ti ti-world" aria-hidden="true"></i>
+      Alma Connect
+    </a>
+  </div>
+</div>
+
+<div class="section section-alt">
+  <div class="section-label">Campus · Department Handles</div>
+  <div class="section-title">Department Communities</div>
+  <div class="section-sub">Each campus and department runs its own active alumni community. Find yours and join the conversation.</div>
+
+  <div class="dept-section">
+    <div class="dept-campus">
+      <div class="campus-name">Main Campus — North</div>
+      <div class="dept-pills">
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Computer Science</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Mechanical Engg.</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Civil Engg.</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Electronics</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Biotechnology</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> MBA</a>
+      </div>
+    </div>
+    <div class="dept-campus">
+      <div class="campus-name">South Campus</div>
+      <div class="dept-pills">
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Architecture</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Design</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Law</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Humanities</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Economics</a>
+      </div>
+    </div>
+    <div class="dept-campus">
+      <div class="campus-name">Research & Tech Campus</div>
+      <div class="dept-pills">
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> AI & Data Science</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Pharmacy</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Life Sciences</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Physics & Maths</a>
+        <a href="#" class="dept-pill"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Chemistry</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-note">© 2025 Alumni Association · All sections are placeholder — replace links, numbers, and names with your institution's details.</div>
+
+<script>
+function submitTalentForm() {
+  const name = document.getElementById('t-name').value.trim();
+  const batch = document.getElementById('t-batch').value.trim();
+  const dept = document.getElementById('t-dept').value.trim();
+  const email = document.getElementById('t-email').value.trim();
+  const phone = document.getElementById('t-phone').value.trim();
+  const city = document.getElementById('t-city').value.trim();
+
+  if (!name || !batch || !dept || !email || !phone || !city) {
+    alert('Please fill in all required fields (marked with *).');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // Show success message
+  document.getElementById('t-success').style.display = 'block';
+
+  // Reset form fields
+  ['t-name','t-batch','t-dept','t-email','t-phone','t-city',
+   't-designation','t-company','t-linkedin','t-about'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+
+  // Scroll success into view
+  document.getElementById('t-success').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+</script>
