@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sustainability Initiatives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --forest:#1a3d1f;
+    --forest-mid:#2d6134;
+    --forest-light:#3d8c45;
+    --green:#4caf50;
+    --green-light:#81c784;
+    --green-pale:#e8f5e9;
+    --lime:#c5e1a5;
+    --gold:#d4a017;
+    --gold-light:#f0c040;
+    --gold-pale:#fffde7;
+    --cream:#f9fdf5;
+    --text:#1a2e1b;
+    --muted:#4a6350;
+    --border:#c8dfc9;
+    --card-bg:#ffffff;
+    --section-alt:#f0f7f0;
+    --ff-display:'Playfair Display',Georgia,serif;
+    --ff-body:'DM Sans',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:var(--ff-body);background:var(--cream);color:var(--text);overflow-x:hidden}
+
+  /* ── NAVBAR ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    padding:0 5%;height:64px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(26,61,31,0.96);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(212,160,23,0.25);
+    box-shadow:0 2px 30px rgba(0,0,0,0.25);
+  }
+  .nav-brand{display:flex;align-items:center;gap:10px}
+  .nav-brand-icon{
+    width:32px;height:32px;border-radius:50%;
+    background:rgba(212,160,23,0.2);border:1px solid rgba(212,160,23,0.4);
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+  }
+  .nav-brand strong{
+    font-family:var(--ff-display);font-weight:700;font-size:1.15rem;
+    letter-spacing:1px;color:var(--gold-light);
+  }
+  .nav-links{display:flex;gap:1.75rem;align-items:center}
+  .nav-links a{
+    color:rgba(197,225,165,0.8);text-decoration:none;
+    font-size:.78rem;letter-spacing:1px;text-transform:uppercase;font-weight:500;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--gold-light)}
+  .nav-cta{
+    background:var(--gold)!important;color:#fff!important;
+    padding:.42rem 1.3rem;border-radius:40px;
+    font-weight:600!important;transition:background .2s,transform .15s!important;
+  }
+  .nav-cta:hover{background:var(--gold-light)!important;color:var(--forest)!important;transform:translateY(-1px)!important}
+
+  /* ── HERO ── */
+  .hero{
+    padding:7rem 5% 5rem;text-align:center;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#1a3d1f 0%,#2d6134 55%,#1e4a24 100%);
+    min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 80% 60% at 50% 120%,rgba(212,160,23,0.15),transparent);
+    pointer-events:none;
+  }
+  .hero-badge{
+    display:inline-block;background:rgba(212,160,23,0.18);border:1px solid rgba(212,160,23,0.4);
+    color:var(--gold-light);font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    padding:5px 18px;border-radius:20px;margin-bottom:1.4rem;font-weight:500;
+    animation:fadeDown .7s ease both;
+  }
+  .hero h1{
+    font-family:var(--ff-display);color:#fff;
+    font-size:clamp(2.2rem,5.5vw,3.8rem);
+    line-height:1.12;margin-bottom:1rem;font-weight:900;
+    animation:fadeDown .7s .12s ease both;
+  }
+  .hero h1 span{color:var(--gold-light)}
+  .hero p{
+    color:rgba(255,255,255,0.72);font-size:1rem;max-width:560px;
+    margin:0 auto 2.5rem;line-height:1.75;font-weight:300;
+    animation:fadeDown .7s .24s ease both;
+  }
+
+  /* ── CAROUSEL ── */
+  .carousel-section{
+    background:linear-gradient(180deg,#1e4a24 0%,#1a3d1f 100%);
+    padding:0 0 3rem;position:relative;
+  }
+  .carousel-wrap{overflow:hidden;position:relative}
+  .carousel-track{
+    display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);
+  }
+  .carousel-slide{
+    flex:0 0 20%;min-width:0;padding:6px;
+  }
+  .carousel-slide img{
+    width:100%;aspect-ratio:4/3;object-fit:cover;
+    border-radius:10px;display:block;
+    border:2px solid rgba(212,160,23,0.2);
+    transition:border-color .2s,transform .2s;
+  }
+  .carousel-slide img:hover{border-color:var(--gold);transform:scale(1.02)}
+  .carousel-controls{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin-top:1.5rem;
+  }
+  .car-btn{
+    width:40px;height:40px;border-radius:50%;
+    border:1px solid rgba(212,160,23,0.4);
+    background:rgba(212,160,23,0.12);
+    color:var(--gold-light);font-size:1.1rem;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .car-btn:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .car-dots{display:flex;gap:6px;align-items:center}
+  .car-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:rgba(212,160,23,0.3);cursor:pointer;transition:all .2s;
+  }
+  .car-dot.active{background:var(--gold);width:20px;border-radius:4px}
+
+  /* ── SHARED SECTION ── */
+  .section{padding:4.5rem 5%}
+  .section-alt{background:var(--section-alt)}
+  .section-label{
+    font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--forest-light);font-weight:600;margin-bottom:.5rem;
+  }
+  .section-title{
+    font-family:var(--ff-display);font-size:clamp(1.6rem,3.5vw,2.4rem);
+    font-weight:700;color:var(--forest);margin-bottom:.6rem;line-height:1.2;
+  }
+  .section-title em{font-style:italic;color:var(--gold)}
+  .section-sub{color:var(--muted);font-size:.93rem;line-height:1.75;margin-bottom:1.5rem;max-width:520px}
+
+  /* ── 30/70 SPLIT SECTIONS ── */
+  .split-section{padding:4rem 5%;display:flex;align-items:center;gap:3rem}
+  .split-section.reverse{flex-direction:row-reverse}
+  .split-img{
+    flex:0 0 30%;max-width:30%;
+    border-radius:16px;overflow:hidden;
+    box-shadow:0 8px 32px rgba(26,61,31,0.15);
+    border:2px solid var(--border);
+    position:relative;
+  }
+  .split-img img{
+    width:100%;aspect-ratio:3/4;object-fit:cover;display:block;
+  }
+  .split-img-badge{
+    position:absolute;bottom:14px;left:14px;
+    background:rgba(26,61,31,0.88);
+    border:1px solid rgba(212,160,23,0.4);
+    color:var(--gold-light);
+    font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+    padding:5px 12px;border-radius:20px;font-weight:600;
+    backdrop-filter:blur(6px);
+  }
+  .split-text{flex:1;min-width:0}
+  .split-tag{
+    display:inline-block;
+    background:var(--green-pale);border:1px solid var(--border);
+    color:var(--forest-mid);font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    padding:4px 14px;border-radius:20px;font-weight:600;margin-bottom:1rem;
+  }
+  .split-text h2{
+    font-family:var(--ff-display);font-size:clamp(1.5rem,3vw,2.2rem);
+    font-weight:700;color:var(--forest);margin-bottom:.75rem;line-height:1.2;
+  }
+  .split-text h2 em{font-style:italic;color:var(--gold)}
+  .split-text p{
+    font-size:.95rem;line-height:1.8;color:var(--muted);margin-bottom:1.25rem;font-weight:400;
+  }
+  .split-stats{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .split-stat{
+    background:var(--green-pale);border:1px solid var(--border);
+    border-radius:10px;padding:.75rem 1.1rem;text-align:center;min-width:90px;
+  }
+  .split-stat-num{
+    font-family:var(--ff-display);font-size:1.5rem;font-weight:700;
+    color:var(--forest);display:block;line-height:1;
+  }
+  .split-stat-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+  .split-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--forest);color:#fff;font-weight:500;font-size:.9rem;
+    padding:11px 24px;border-radius:40px;text-decoration:none;border:none;cursor:pointer;
+    transition:background .2s,transform .15s;
+  }
+  .split-cta:hover{background:var(--forest-light);transform:translateY(-1px)}
+  .split-cta.outline{
+    background:transparent;color:var(--forest);border:1.5px solid var(--forest);
+  }
+  .split-cta.outline:hover{background:var(--forest);color:#fff}
+
+  /* checklist style */
+  .check-list{list-style:none;padding:0;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.55rem}
+  .check-list li{
+    font-size:.9rem;color:var(--muted);line-height:1.6;
+    padding-left:1.4rem;position:relative;
+  }
+  .check-list li::before{
+    content:'✦';position:absolute;left:0;top:.05rem;
+    color:var(--gold);font-size:.65rem;
+  }
+  .check-list li strong{color:var(--forest);font-weight:600}
+
+  /* ── FOOTER ── */
+  footer{
+    background:var(--forest);padding:3rem 5%;
+    border-top:1px solid rgba(212,160,23,0.2);
+  }
+  .footer-inner{
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto;
+    padding-bottom:2rem;border-bottom:1px solid rgba(212,160,23,0.15);
+  }
+  .footer-brand{font-family:var(--ff-display);font-size:1.6rem;font-weight:900;color:var(--gold-light);margin-bottom:.75rem}
+  .footer-desc{font-size:.85rem;color:rgba(255,255,255,0.55);line-height:1.75;max-width:280px}
+  .footer-col h4{
+    font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+    color:rgba(197,225,165,0.6);font-weight:600;margin-bottom:1rem;
+  }
+  .footer-col a{
+    display:block;font-size:.85rem;color:rgba(255,255,255,0.6);
+    text-decoration:none;margin-bottom:.5rem;transition:color .2s;
+  }
+  .footer-col a:hover{color:var(--gold-light)}
+  .footer-bottom{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:1.5rem;max-width:1100px;margin:0 auto;
+    font-size:.75rem;color:rgba(255,255,255,0.35);
+  }
+  .footer-bottom a{color:rgba(197,225,165,0.5);text-decoration:none}
+  .footer-bottom a:hover{color:var(--gold-light)}
+  .footer-badges{display:flex;gap:.75rem}
+  .footer-badge{
+    background:rgba(212,160,23,0.15);border:1px solid rgba(212,160,23,0.3);
+    color:var(--gold-light);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+    padding:4px 10px;border-radius:20px;font-weight:600;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px){
+    .split-section,.split-section.reverse{flex-direction:column;gap:1.75rem}
+    .split-img{flex:none;max-width:100%;width:100%}
+    .split-img img{aspect-ratio:16/9}
+    .footer-inner{grid-template-columns:1fr;gap:2rem}
+    .nav-links .hide-mobile{display:none}
+    .carousel-slide{flex:0 0 50%}
+  }
+  @media(max-width:480px){
+    .carousel-slide{flex:0 0 100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-brand-icon">🌿</div>
+    <strong>GreenEra</strong>
+  </div>
+  <div class="nav-links">
+    <a href="#initiatives" class="hide-mobile">Initiatives</a>
+    <a href="#impact" class="hide-mobile">Impact</a>
+    <a href="#programs" class="hide-mobile">Programs</a>
+    <a href="#join" class="nav-cta">Join Us</a>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Our Commitment to the Planet</div>
+  <h1>Sustainability<br><span>Initiatives</span></h1>
+  <p>Driving meaningful change through innovation, community action, and a deep commitment to a greener, more equitable future for generations to come.</p>
+</section>
+
+
+<!-- CAROUSEL -->
+<div class="carousel-section">
+  <div class="carousel-wrap" id="carouselWrap">
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Slides use Unsplash sustainability/nature images -->
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80" alt="Solar panels on a field"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1542601906897-a9c5b9a3b2af?w=600&q=80" alt="Forest conservation"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?w=600&q=80" alt="Wind turbines"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?w=600&q=80" alt="Community garden"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=80" alt="Recycling initiative"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=600&q=80" alt="Clean water project"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=600&q=80" alt="Tree planting"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&q=80" alt="Organic farming"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1451188502541-13943edb6acb?w=600&q=80" alt="Green city"/></div>
+      <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=600&q=80" alt="Ocean cleanup"/></div>
+    </div>
+  </div>
+  <div class="carousel-controls">
+    <button class="car-btn" id="carPrev" aria-label="Previous">&#8592;</button>
+    <div class="car-dots" id="carDots"></div>
+    <button class="car-btn" id="carNext" aria-label="Next">&#8594;</button>
+  </div>
+</div>
+
+
+<!-- SPLIT SECTION 1 — Renewable Energy -->
+<div class="split-section" id="initiatives">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80" alt="Solar energy installation"/>
+    <span class="split-img-badge">Since 2019</span>
+  </div>
+  <div class="split-text">
+    <span class="split-tag">01 · Energy</span>
+    <h2>Renewable <em>Energy</em> Transition</h2>
+    <p>Our flagship energy programme has transformed how we power our campuses and communities. By shifting to solar, wind, and biomass sources, we have cut our carbon footprint dramatically while inspiring neighbouring institutions to follow suit.</p>
+    <ul class="check-list">
+      <li><strong>Solar Rooftops</strong> — 12,000 sq. ft. of panels installed across 4 campuses</li>
+      <li><strong>Wind Partnerships</strong> — Tie-ups with 3 regional wind farms supplying clean kilowatts</li>
+      <li><strong>Net Zero Target</strong> — On track to achieve full carbon neutrality by 2030</li>
+      <li><strong>Community Microgrids</strong> — Powering 6 nearby villages with surplus green energy</li>
+    </ul>
+    <div class="split-stats">
+      <div class="split-stat"><span class="split-stat-num">68%</span><span class="split-stat-lbl">Carbon Reduced</span></div>
+      <div class="split-stat"><span class="split-stat-num">4.2 MW</span><span class="split-stat-lbl">Clean Energy</span></div>
+      <div class="split-stat"><span class="split-stat-num">2030</span><span class="split-stat-lbl">Net Zero Goal</span></div>
+    </div>
+    <a href="#" class="split-cta">Learn More &rarr;</a>
+  </div>
+</div>
+
+
+<!-- SPLIT SECTION 2 — Reforestation (reversed) -->
+<div class="split-section reverse section-alt">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1542601906897-a9c5b9a3b2af?w=800&q=80" alt="Reforestation programme"/>
+    <span class="split-img-badge">250k Trees</span>
+  </div>
+  <div class="split-text">
+    <span class="split-tag">02 · Forests</span>
+    <h2>Campus <em>Reforestation</em> Drive</h2>
+    <p>Trees are the lungs of our planet. Our reforestation programme engages students, faculty, and local communities in large-scale tree planting drives, restoring degraded land and creating vital green corridors for wildlife.</p>
+    <ul class="check-list">
+      <li><strong>250,000 Trees</strong> — Planted across Uttarakhand and adjoining states since 2020</li>
+      <li><strong>Native Species</strong> — 80% of plantings use indigenous, climate-resilient varieties</li>
+      <li><strong>Student Brigades</strong> — Over 8,000 student volunteers participate annually</li>
+      <li><strong>Carbon Sequestration</strong> — Estimated 14,000 tonnes CO₂ absorbed per year</li>
+    </ul>
+    <div class="split-stats">
+      <div class="split-stat"><span class="split-stat-num">250k</span><span class="split-stat-lbl">Trees Planted</span></div>
+      <div class="split-stat"><span class="split-stat-num">8,000+</span><span class="split-stat-lbl">Volunteers</span></div>
+      <div class="split-stat"><span class="split-stat-num">14k t</span><span class="split-stat-lbl">CO₂ Absorbed</span></div>
+    </div>
+    <a href="#" class="split-cta outline">Join a Drive &rarr;</a>
+  </div>
+</div>
+
+
+<!-- SPLIT SECTION 3 — Waste Management -->
+<div class="split-section" id="impact">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&q=80" alt="Waste management and recycling"/>
+    <span class="split-img-badge">Zero Waste</span>
+  </div>
+  <div class="split-text">
+    <span class="split-tag">03 · Waste</span>
+    <h2>Zero Waste <em>Campus</em> Programme</h2>
+    <p>We are reimagining waste as a resource. Through segregation at source, composting, upcycling workshops, and partnerships with certified recyclers, we are systematically eliminating landfill dependency across all our facilities.</p>
+    <ul class="check-list">
+      <li><strong>Segregation at Source</strong> — Colour-coded bins with smart sensors on all floors</li>
+      <li><strong>Composting Units</strong> — 5 bio-composters turning 600 kg of organic waste daily</li>
+      <li><strong>Plastic-Free Zones</strong> — Single-use plastic banned across all campus facilities</li>
+      <li><strong>Upcycling Lab</strong> — Student-run workshop converting waste into usable products</li>
+    </ul>
+    <div class="split-stats">
+      <div class="split-stat"><span class="split-stat-num">92%</span><span class="split-stat-lbl">Waste Diverted</span></div>
+      <div class="split-stat"><span class="split-stat-num">600 kg</span><span class="split-stat-lbl">Composted/Day</span></div>
+      <div class="split-stat"><span class="split-stat-num">0</span><span class="split-stat-lbl">Plastic Items</span></div>
+    </div>
+    <a href="#" class="split-cta">Explore Initiative &rarr;</a>
+  </div>
+</div>
+
+
+<!-- SPLIT SECTION 4 — Water Conservation (reversed) -->
+<div class="split-section reverse section-alt">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80" alt="Water conservation effort"/>
+    <span class="split-img-badge">30M Litres Saved</span>
+  </div>
+  <div class="split-text">
+    <span class="split-tag">04 · Water</span>
+    <h2>Water <em>Conservation</em> &amp; Harvesting</h2>
+    <p>With water stress rising globally, our campus has become a model for responsible water stewardship. Rainwater harvesting, greywater recycling, and precision irrigation systems have slashed our freshwater consumption significantly.</p>
+    <ul class="check-list">
+      <li><strong>Rainwater Harvesting</strong> — 18 collection points capturing 8M litres annually</li>
+      <li><strong>Greywater Recycling</strong> — Treated and reused for irrigation and sanitation</li>
+      <li><strong>Smart Irrigation</strong> — IoT-driven drip systems cut water use by 45%</li>
+      <li><strong>Awareness Campaigns</strong> — Monthly workshops reaching 2,500+ students</li>
+    </ul>
+    <div class="split-stats">
+      <div class="split-stat"><span class="split-stat-num">30M L</span><span class="split-stat-lbl">Saved Yearly</span></div>
+      <div class="split-stat"><span class="split-stat-num">45%</span><span class="split-stat-lbl">Usage Reduction</span></div>
+      <div class="split-stat"><span class="split-stat-num">18</span><span class="split-stat-lbl">Harvest Points</span></div>
+    </div>
+    <a href="#" class="split-cta outline">Read Report &rarr;</a>
+  </div>
+</div>
+
+
+<!-- SPLIT SECTION 5 — Green Education -->
+<div class="split-section" id="programs">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?w=800&q=80" alt="Green education programme"/>
+    <span class="split-img-badge">12k Learners</span>
+  </div>
+  <div class="split-text">
+    <span class="split-tag">05 · Education</span>
+    <h2>Green <em>Education</em> &amp; Research</h2>
+    <p>Sustainability starts with knowledge. Our interdisciplinary green curriculum, research fellowships, and community outreach programmes are nurturing the next generation of environmental leaders — on campus and beyond.</p>
+    <ul class="check-list">
+      <li><strong>Green Curriculum</strong> — Sustainability modules embedded in 60+ degree programmes</li>
+      <li><strong>Research Fellowships</strong> — 40 funded positions in climate, ecology, and clean tech</li>
+      <li><strong>School Outreach</strong> — Eco-literacy workshops in 120 regional schools annually</li>
+      <li><strong>Innovation Awards</strong> — Annual prize pool of ₹15 lakh for student green projects</li>
+    </ul>
+    <div class="split-stats">
+      <div class="split-stat"><span class="split-stat-num">60+</span><span class="split-stat-lbl">Programmes</span></div>
+      <div class="split-stat"><span class="split-stat-num">12k</span><span class="split-stat-lbl">Learners</span></div>
+      <div class="split-stat"><span class="split-stat-num">120</span><span class="split-stat-lbl">Schools Reached</span></div>
+    </div>
+    <a href="#" class="split-cta">Explore Courses &rarr;</a>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer id="join">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">🌿 GreenEra</div>
+      <p class="footer-desc">Committed to a sustainable future through education, innovation, and community action. Every initiative we take is a step toward a healthier planet.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Initiatives</h4>
+      <a href="#">Renewable Energy</a>
+      <a href="#">Reforestation</a>
+      <a href="#">Zero Waste</a>
+      <a href="#">Water Conservation</a>
+      <a href="#">Green Education</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="#">Volunteer</a>
+      <a href="#">Donate</a>
+      <a href="#">Partner With Us</a>
+      <a href="#">Annual Report</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 GreenEra Sustainability Initiative &nbsp;&middot;&nbsp; All Rights Reserved</span>
+    <div class="footer-badges">
+      <span class="footer-badge">ISO 14001</span>
+      <span class="footer-badge">UN SDGs</span>
+      <span class="footer-badge">Net Zero 2030</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  const track = document.getElementById('carouselTrack');
+  const wrap  = document.getElementById('carouselWrap');
+  const dotsEl= document.getElementById('carDots');
+  const slides= track.querySelectorAll('.carousel-slide');
+  const total = slides.length;
+  let perView = 5, current = 0, autoTimer;
+
+  function getPerView(){
+    const w = wrap.offsetWidth;
+    if(w < 480) return 1;
+    if(w < 768) return 2;
+    return 5;
+  }
+
+  function maxIndex(){ return Math.max(0, total - perView); }
+
+  function buildDots(){
+    dotsEl.innerHTML='';
+    const pages = maxIndex() + 1;
+    for(let i=0;i<pages;i++){
+      const d=document.createElement('div');
+      d.className='car-dot'+(i===current?' active':'');
+      d.addEventListener('click',()=>goTo(i));
+      dotsEl.appendChild(d);
+    }
+  }
+
+  function updateDots(){
+    dotsEl.querySelectorAll('.car-dot').forEach((d,i)=>{
+      d.classList.toggle('active',i===current);
+    });
+  }
+
+  function goTo(idx){
+    current = Math.max(0, Math.min(idx, maxIndex()));
+    const slideW = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${current * slideW}px)`;
+    updateDots();
+  }
+
+  function next(){ goTo(current < maxIndex() ? current+1 : 0); }
+  function prev(){ goTo(current > 0 ? current-1 : maxIndex()); }
+
+  document.getElementById('carNext').addEventListener('click',()=>{ next(); resetAuto(); });
+  document.getElementById('carPrev').addEventListener('click',()=>{ prev(); resetAuto(); });
+
+  function startAuto(){ autoTimer = setInterval(next, 3500); }
+  function resetAuto(){ clearInterval(autoTimer); startAuto(); }
+
+  function init(){
+    perView = getPerView();
+    buildDots();
+    goTo(0);
+    startAuto();
+  }
+
+  window.addEventListener('resize', ()=>{ perView=getPerView(); buildDots(); goTo(0); });
+  init();
+})();
+</script>
+</body>
+</html>
